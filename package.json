@@ -1,0 +1,15 @@
+{
+  "name": "customer-manager",
+  "version": "1.0.0",
+  "description": "## Descrição:",
+  "main": "index.js",
+  "scripts": {
+    "docker:up": "npm run docker:up:conditional",
+    "docker:down": "npm run docker:down:conditional",
+    "docker:up:conditional": "docker-compose up -d --build || docker compose up -d --build",
+    "docker:down:conditional": "docker-compose down -v || docker compose down -v"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

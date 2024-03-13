@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+
+  backend:
+    build: ./backend
+    container_name: backend-customer-manager
+    tty: true
+    stdin_open: true
+    restart: always
+    volumes:
+      - ./backend:/backend
+    depends_on:
+      - db
+    ports:
+      - 3001:3001
+    env_file:
+      ./backend/.env
+    networks:
+      - customer-manager-network
+
+  db:
+    image: postgres:16.2
+    restart: always
+    container_name: db-customer-manager
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: pass
+    networks:
+      - customer-manager-network
+
+  frontend:
+    build: ./frontend
+    container_name: frontend-customer-manager
+    tty: true
+    stdin_open: true
+    restart: always
+    volumes:
+      - ./frontend:/frontend
+    ports:
+      - 3000:3000
+    networks:
+      - customer-manager-network
+
+networks:
+  customer-manager-network:
+    driver: bridge
