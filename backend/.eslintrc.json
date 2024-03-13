@@ -1,0 +1,8 @@
+{
+  "root": true,
+  "extends": "airbnb",
+  "rules": {
+    "no-trailing-spaces": "error",
+    "import/no-extraneous-dependencies": 1
+  }
+}
