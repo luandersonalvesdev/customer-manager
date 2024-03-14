@@ -22,14 +22,14 @@ SequelizeCustomer.init(
     fullName: { type: DataTypes.STRING, allowNull: false, field: 'full_name' },
     email: { type: DataTypes.STRING, allowNull: false, unique: true },
     cpf: { type: DataTypes.STRING, allowNull: false, unique: true },
-    phoneNumber: { type: DataTypes.REAL, allowNull: false, field: 'phone_number' },
+    phoneNumber: { type: DataTypes.STRING, allowNull: false, field: 'phone_number' },
     statusId: { type: DataTypes.INTEGER, allowNull: false, field: 'status_id' },
     createdAt: { type: DataTypes.DATE, allowNull: false, field: 'created_at' },
     updatedAt: { type: DataTypes.DATE, allowNull: false, field: 'updated_at' },
   },
   {
     sequelize: db,
-    modelName: 'Customer',
+    modelName: 'customers',
   }
 )
 

@@ -17,7 +17,7 @@ SequelizeCustomerStatus.init(
   {
     sequelize: db,
     timestamps: false,
-    modelName: 'CustomerStatus',
+    modelName: 'customer_statuses',
   }
 );
 
