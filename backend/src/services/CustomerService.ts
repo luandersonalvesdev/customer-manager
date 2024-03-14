@@ -1,15 +1,40 @@
+import { Op } from 'sequelize';
 import SequelizeCustomer from '../db/models/customer';
-import { CREATED } from '../utils/mapStatusHTTP';
+import { CREATED, BAD_REQUEST, CONFLICT } from '../utils/mapStatusHTTP';
+import customerSchema from '../validations/customerSchema';
 
 export default class CustomerService {
   private customerModel = SequelizeCustomer;
 
   public async createCustomer(newCustomer: SequelizeCustomer) {
-    const customerCreated = await this.customerModel.create(newCustomer);
+    const { error } = customerSchema.validate(newCustomer);
+    if (error) {
+      return {
+        status: BAD_REQUEST,
+        data: { message: error.message },
+      };
+    }
+
+    const [customerCreated, created] = await this.customerModel.findOrCreate({
+      where: {
+        [Op.or]: [
+          { email: newCustomer.email },
+          { cpf: newCustomer.cpf }
+        ],
+      },
+      defaults: newCustomer,
+    });
+
+    if (!created) {
+      return {
+        status: CONFLICT,
+        data: { message: 'Email or CPF already exists' },
+      };
+    }
 
     return {
       status: CREATED,
       data: customerCreated,
-    };
+    }
   }
 }
