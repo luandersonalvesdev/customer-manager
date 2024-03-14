@@ -2,10 +2,13 @@
   "root": true,
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint"],
-  "extends": ["airbnb", "plugin:@typescript-eslint/recommended"],
+  "extends": [
+    "plugin:@typescript-eslint/recommended"
+  ],
   "rules": {
     "no-trailing-spaces": "error",
-    "import/no-extraneous-dependencies": 1
+    "import/no-extraneous-dependencies": "off",
+    "eol-last": "error"
   },
   "ignorePatterns": ["build/**/*"]
 }

@@ -1,0 +1,8 @@
+nyc.config.js
+node_modules/
+tests/
+build/
+src/db/migrations
+src/db/seeders
+src/db/config
+src/db/models/index.ts
