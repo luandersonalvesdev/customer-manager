@@ -30,6 +30,19 @@ services:
     networks:
       - customer-manager-network
 
+  frontend:
+    build: ./frontend
+    container_name: frontend-customer-manager
+    tty: true
+    stdin_open: true
+    restart: always
+    volumes:
+      - ./frontend:/frontend
+    ports:
+      - 3000:3000
+    networks:
+      - customer-manager-network
+
 networks:
   customer-manager-network:
     driver: bridge
