@@ -3,7 +3,7 @@ import {
 } from 'sequelize';
 import db from '.';
 
-class SequelizeCustomerStatus extends Model<InferAttributes<SequelizeCustomerStatus>, 
+class SequelizeCustomerStatus extends Model<InferAttributes<SequelizeCustomerStatus>,
   InferCreationAttributes<SequelizeCustomerStatus>> {
     declare id: CreationOptional<number>;
     declare status: string;
@@ -18,6 +18,7 @@ SequelizeCustomerStatus.init(
     sequelize: db,
     timestamps: false,
     modelName: 'customer_statuses',
+    underscored: true
   }
 );
 

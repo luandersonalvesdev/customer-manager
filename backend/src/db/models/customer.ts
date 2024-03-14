@@ -30,6 +30,8 @@ SequelizeCustomer.init(
   {
     sequelize: db,
     modelName: 'customers',
+    underscored: true,
+    timestamps: true,
   }
 )
 
