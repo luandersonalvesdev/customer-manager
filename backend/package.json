@@ -5,7 +5,7 @@
   "main": "./src/server.js",
   "scripts": {
     "build": "tsc --project tsconfig.json",
-    "prestart": "npm run build && npm run db:reset",
+    "prestart": "npm run build",
     "start": "node ./build/server.js",
     "dev": "tsnd --watch \"./src/**\" --transpile-only ./src/server.ts"
   },
