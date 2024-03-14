@@ -2,11 +2,13 @@ import { Op } from 'sequelize';
 import SequelizeCustomer from '../db/models/customer';
 import { CREATED, BAD_REQUEST, CONFLICT } from '../utils/mapStatusHTTP';
 import customerSchema from '../validations/customerSchema';
+import { ServiceResponse } from '../Interfaces/ServiceResponse';
+import ICustomer from '../Interfaces/ICustomer';
 
 export default class CustomerService {
   private customerModel = SequelizeCustomer;
 
-  public async createCustomer(newCustomer: SequelizeCustomer) {
+  public async createCustomer(newCustomer: ICustomer): Promise<ServiceResponse<ICustomer>> {
     const { error } = customerSchema.validate(newCustomer);
     if (error) {
       return {
