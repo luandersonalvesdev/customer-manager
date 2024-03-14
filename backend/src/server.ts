@@ -1,5 +1,6 @@
-const app = require('./app');
+// eslint-disable-next-line import/no-unresolved, import/extensions
+import { App } from './app';
 
 const PORT = process.env.PORT || 3001;
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+new App().start(PORT);

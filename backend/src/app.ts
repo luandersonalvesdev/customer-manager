@@ -1,17 +1,38 @@
-import { Request, Response } from 'express';
-const express = require('express');
-const cors = require('cors');
+import * as express from 'express';
 
-const app = express();
+class App {
+  public app: express.Express;
 
-app.use(express.json());
-app.use(cors());
+  constructor() {
+    this.app = express();
 
-app.get('/', (_req: Request, res: Response) => {
-  res.send(`
-    Server is healthy!
-    <a href="https://github.com/luandersonalvesdev/customer-manager"> Click here</a> to see the documentation.
-    `);
-});
+    this.config();
 
-module.exports = app;
+    this.app.get('/', (_req: express.Request, res: express.Response) => {
+      res.send(`
+        Server is healthy!
+        <a href="https://github.com/luandersonalvesdev/customer-manager"> Click here</a> to see the documentation.
+      `);
+    });
+  }
+
+  private config() {
+    const accessControl: express.RequestHandler = (_req, res, next) => {
+      res.header('Access-Control-Allow-Origin', '*');
+      res.header('Access-Control-Allow-Methods', 'GET,POST,DELETE,OPTIONS,PUT,PATCH');
+      res.header('Access-Control-Allow-Headers', '*');
+      next();
+    };
+
+    this.app.use(express.json());
+    this.app.use(accessControl);
+  }
+
+  public start(PORT: string | number): void {
+    this.app.listen(PORT, () => console.log(`Running on port ${PORT}`));
+  }
+}
+
+export { App };
+
+export const { app } = new App();
