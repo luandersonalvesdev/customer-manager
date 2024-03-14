@@ -10,4 +10,4 @@ COPY . .
 
 EXPOSE 3001
 
-ENTRYPOINT cd src/db/ && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all && npm run dev
+ENTRYPOINT npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all && npm run dev
