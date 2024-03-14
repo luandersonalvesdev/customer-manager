@@ -1,4 +1,5 @@
 import * as express from 'express';
+import router from './routes';
 
 class App {
   public app: express.Express;
@@ -8,12 +9,18 @@ class App {
 
     this.config();
 
+    this.routes();
+
     this.app.get('/', (_req: express.Request, res: express.Response) => {
       res.send(`
         Server is healthy!
         <a href="https://github.com/luandersonalvesdev/customer-manager"> Click here</a> to see the documentation.
       `);
     });
+  }
+
+  private routes(): void {
+    this.app.use(router);
   }
 
   private config() {
