@@ -12,7 +12,7 @@ export default {
           primaryKey: true,
           type: DataTypes.INTEGER,
         },
-        status: {
+        name: {
           type: DataTypes.STRING,
           allowNull: false,
         },

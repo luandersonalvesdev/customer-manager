@@ -37,7 +37,7 @@ export default class CustomerService {
   public async getAllCustomers(limit: number, offset: number): Promise<ServiceResponse<ICustomer[]>> {
     const customers = await this.customerModel.findAll({
       attributes: ['id', 'fullName', 'email', 'cpf', 'phoneNumber', 'createdAt', 'updatedAt'],
-      include: [{ model: SequelizeCustomerStatus, as: 'status', attributes: ['status', 'id'] }],
+      include: [{ model: SequelizeCustomerStatus, as: 'status', attributes: ['name', 'id'] }],
       limit,
       offset,
     });

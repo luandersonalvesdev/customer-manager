@@ -6,13 +6,13 @@ import db from '.';
 class SequelizeCustomerStatus extends Model<InferAttributes<SequelizeCustomerStatus>,
   InferCreationAttributes<SequelizeCustomerStatus>> {
     declare id: CreationOptional<number>;
-    declare status: string;
+    declare name: string;
 }
 
 SequelizeCustomerStatus.init(
   {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true, allowNull: false },
-    status: { type: DataTypes.STRING, allowNull: false },
+    name: { type: DataTypes.STRING, allowNull: false },
   },
   {
     sequelize: db,

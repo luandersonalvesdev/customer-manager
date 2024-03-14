@@ -7,19 +7,19 @@ export default {
       [
         {
           id: 1,
-          status: 'Ativo',
+          name: 'Ativo',
         },
         {
           id: 2,
-          status: 'Inativo',
+          name: 'Inativo',
         },
         {
           id: 3,
-          status: 'Aguardando ativação',
+          name: 'Aguardando ativação',
         },
         {
           id: 4,
-          status: 'Desativado',
+          name: 'Desativado',
         },
       ],
       {},
