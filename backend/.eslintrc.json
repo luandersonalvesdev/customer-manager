@@ -1,8 +1,11 @@
 {
   "root": true,
-  "extends": "airbnb",
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "extends": ["airbnb", "plugin:@typescript-eslint/recommended"],
   "rules": {
     "no-trailing-spaces": "error",
     "import/no-extraneous-dependencies": 1
-  }
+  },
+  "ignorePatterns": ["build/**/*"]
 }
