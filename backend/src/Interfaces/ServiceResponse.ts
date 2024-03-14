@@ -1,6 +1,6 @@
 export type ServiceMessage = { message: string };
 
-type ServiceResponseErrorStatusType = 'CREATED' | 'BAD_REQUEST' | 'CONFLICT' | 'INTERNAL_SERVER_ERROR';
+type ServiceResponseErrorStatusType = 'CREATED' | 'BAD_REQUEST' | 'CONFLICT' | 'INTERNAL_SERVER_ERROR' | 'NOT_FOUND';
 
 type ServiceResponseSuccessStatusType = 'SUCCESS' | 'CREATED';
 

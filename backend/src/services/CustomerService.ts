@@ -1,6 +1,6 @@
 import { Op } from 'sequelize';
 import SequelizeCustomer from '../db/models/customer';
-import { CREATED, BAD_REQUEST, CONFLICT, SUCCESS } from '../utils/mapStatusHTTP';
+import { CREATED, BAD_REQUEST, CONFLICT, SUCCESS, NOT_FOUND } from '../utils/mapStatusHTTP';
 import customerSchema, { customerSchemaWithId } from '../validations/customerSchema';
 import { ServiceResponse } from '../Interfaces/ServiceResponse';
 import ICustomer from '../Interfaces/ICustomer';
@@ -63,5 +63,15 @@ export default class CustomerService {
     });
 
     return { status: SUCCESS, data: newCustomerData };
+  }
+
+  public async getCustomerById(id: number): Promise<ServiceResponse<ICustomer>> {
+    const customer = await this.customerModel.findOne({ where: { id } });
+
+    if (!customer) {
+      return { status: NOT_FOUND, data: { message: 'Customer not found.' } };
+    }
+
+    return { status: SUCCESS, data: customer };
   }
 }

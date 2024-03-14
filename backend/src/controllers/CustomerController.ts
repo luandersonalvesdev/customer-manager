@@ -21,4 +21,10 @@ export default class CustomerController {
     const { status, data } = await this.customerService.updateCustomer(req.body);
     return res.status(mapStatusHTTP(status)).json(data);
   }
+
+  public async getCustomerById(req: Request, res: Response) {
+    const { id } = req.params;
+    const { status, data } = await this.customerService.getCustomerById(Number(id));
+    return res.status(mapStatusHTTP(status)).json(data);
+  }
 }
