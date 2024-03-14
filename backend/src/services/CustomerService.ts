@@ -79,4 +79,9 @@ export default class CustomerService {
       return { status: BAD_REQUEST, data: { message: 'Id is not a number.' } };
     }
   }
+
+  public async getCustomersLength(): Promise<ServiceResponse<{size: number}>> {
+    const customersSize = await this.customerModel.count();
+    return { status: SUCCESS, data: {size: customersSize} };
+  }
 }
