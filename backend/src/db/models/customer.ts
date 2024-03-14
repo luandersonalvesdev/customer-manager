@@ -4,13 +4,13 @@ import {
 import db from '.';
 import SequelizeCustomerStatus from './customerstatus';
 
-class SequelizeCustomer extends Model<InferAttributes<SequelizeCustomer>, 
+class SequelizeCustomer extends Model<InferAttributes<SequelizeCustomer>,
   InferCreationAttributes<SequelizeCustomer>> {
     declare id: CreationOptional<number>;
     declare fullName: string;
     declare email: string;
     declare cpf: string;
-    declare phoneNumber: number;
+    declare phoneNumber: string;
     declare statusId: number;
     declare createdAt: CreationOptional<Date>;
     declare updatedAt: CreationOptional<Date>;
