@@ -4,6 +4,7 @@ import { CREATED, BAD_REQUEST, CONFLICT, SUCCESS, NOT_FOUND } from '../utils/map
 import customerSchema, { customerSchemaWithId } from '../validations/customerSchema';
 import { ServiceResponse } from '../Interfaces/ServiceResponse';
 import ICustomer from '../Interfaces/ICustomer';
+import SequelizeCustomerStatus from '../db/models/customerstatus';
 
 export default class CustomerService {
   private customerModel = SequelizeCustomer;
@@ -34,7 +35,12 @@ export default class CustomerService {
   }
 
   public async getAllCustomers(limit: number, offset: number): Promise<ServiceResponse<ICustomer[]>> {
-    const customers = await this.customerModel.findAll({ limit, offset });
+    const customers = await this.customerModel.findAll({
+      attributes: ['id', 'full_name', 'email', 'cpf', 'phone_number', 'created_at', 'updated_at'],
+      include: [{ model: SequelizeCustomerStatus, as: 'status', attributes: ['status', 'id'] }],
+      limit,
+      offset,
+    });
     return { status: SUCCESS, data: customers };
   }
 
