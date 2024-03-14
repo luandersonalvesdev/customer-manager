@@ -1,11 +1,11 @@
 export type ServiceMessage = { message: string };
 
-type ServiceResponseErrorType = 'CREATED' | 'BAD_REQUEST' | 'CONFLICT' | 'INTERNAL_SERVER_ERROR';
+type ServiceResponseErrorStatusType = 'CREATED' | 'BAD_REQUEST' | 'CONFLICT' | 'INTERNAL_SERVER_ERROR';
 
-type ServiceResponseSuccessStatusType = 'SUCCESSFUL' | 'CREATED';
+type ServiceResponseSuccessStatusType = 'SUCCESS' | 'CREATED';
 
 export type ServiceResponseError = {
-  status: ServiceResponseErrorType | string,
+  status: ServiceResponseErrorStatusType | string,
   data: ServiceMessage,
 };
 

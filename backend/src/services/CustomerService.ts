@@ -1,6 +1,6 @@
 import { Op } from 'sequelize';
 import SequelizeCustomer from '../db/models/customer';
-import { CREATED, BAD_REQUEST, CONFLICT } from '../utils/mapStatusHTTP';
+import { CREATED, BAD_REQUEST, CONFLICT, SUCCESS } from '../utils/mapStatusHTTP';
 import customerSchema from '../validations/customerSchema';
 import { ServiceResponse } from '../Interfaces/ServiceResponse';
 import ICustomer from '../Interfaces/ICustomer';
@@ -31,5 +31,10 @@ export default class CustomerService {
     }
 
     return { status: CREATED, data: customerCreated };
+  }
+
+  public async getAllCustomers(limit: number, offset: number): Promise<ServiceResponse<ICustomer[]>> {
+    const customers = await this.customerModel.findAll({ limit, offset });
+    return { status: SUCCESS, data: customers };
   }
 }

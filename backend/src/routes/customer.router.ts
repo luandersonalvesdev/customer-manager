@@ -5,6 +5,7 @@ const customerController = new CustomerController();
 
 const router = Router();
 
+router.get('/', (req: Request, res: Response) => customerController.getAllCustomers(req, res));
 router.post('/', (req: Request, res: Response) => customerController.createCustomer(req, res));
 
 export default router;
