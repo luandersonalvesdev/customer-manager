@@ -24,7 +24,7 @@ export default class CustomerController {
 
   public async getCustomerById(req: Request, res: Response) {
     const { id } = req.params;
-    const { status, data } = await this.customerService.getCustomerById(Number(id));
+    const { status, data } = await this.customerService.getCustomerById(id);
     return res.status(mapStatusHTTP(status)).json(data);
   }
 }

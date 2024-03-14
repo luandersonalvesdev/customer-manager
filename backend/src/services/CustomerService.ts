@@ -65,13 +65,18 @@ export default class CustomerService {
     return { status: SUCCESS, data: newCustomerData };
   }
 
-  public async getCustomerById(id: number): Promise<ServiceResponse<ICustomer>> {
-    const customer = await this.customerModel.findOne({ where: { id } });
+  public async getCustomerById(id: string): Promise<ServiceResponse<ICustomer>> {
+    try {
+      const customer = await this.customerModel.findOne({ where: { id: Number(id) } });
 
-    if (!customer) {
-      return { status: NOT_FOUND, data: { message: 'Customer not found.' } };
+      if (!customer) {
+        return { status: NOT_FOUND, data: { message: 'Customer not found.' } };
+      }
+
+      return { status: SUCCESS, data: customer };
+
+    } catch (error) {
+      return { status: BAD_REQUEST, data: { message: 'Id is not a number.' } };
     }
-
-    return { status: SUCCESS, data: customer };
   }
 }
