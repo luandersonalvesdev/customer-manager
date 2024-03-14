@@ -16,4 +16,9 @@ export default class CustomerController {
     const { status, data } = await this.customerService.getAllCustomers(limit, offset);
     return res.status(mapStatusHTTP(status)).json(data);
   }
+
+  public async updateCustomer(req: Request, res: Response) {
+    const { status, data } = await this.customerService.updateCustomer(req.body);
+    return res.status(mapStatusHTTP(status)).json(data);
+  }
 }

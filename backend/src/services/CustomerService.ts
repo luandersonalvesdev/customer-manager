@@ -1,7 +1,7 @@
 import { Op } from 'sequelize';
 import SequelizeCustomer from '../db/models/customer';
 import { CREATED, BAD_REQUEST, CONFLICT, SUCCESS } from '../utils/mapStatusHTTP';
-import customerSchema from '../validations/customerSchema';
+import customerSchema, { customerSchemaWithId } from '../validations/customerSchema';
 import { ServiceResponse } from '../Interfaces/ServiceResponse';
 import ICustomer from '../Interfaces/ICustomer';
 
@@ -36,5 +36,32 @@ export default class CustomerService {
   public async getAllCustomers(limit: number, offset: number): Promise<ServiceResponse<ICustomer[]>> {
     const customers = await this.customerModel.findAll({ limit, offset });
     return { status: SUCCESS, data: customers };
+  }
+
+  public async updateCustomer(newCustomerData: ICustomer): Promise<ServiceResponse<ICustomer>> {
+    const { error } = customerSchemaWithId.validate(newCustomerData);
+    if (error) {
+      return { status: BAD_REQUEST, data: { message: error.message } };
+    }
+
+    const existingCustomer = await this.customerModel.findOne({
+      where: {
+        [Op.or]: [
+          { email: newCustomerData.email },
+          { cpf: newCustomerData.cpf },
+        ],
+        id: { [Op.not]: newCustomerData.id },
+      },
+    });
+
+    if (existingCustomer) {
+      return { status: CONFLICT, data: { message: 'Email or CPF already exists.' } };
+    }
+
+    await this.customerModel.update(newCustomerData, {
+      where: { id: newCustomerData.id },
+    });
+
+    return { status: SUCCESS, data: newCustomerData };
   }
 }
