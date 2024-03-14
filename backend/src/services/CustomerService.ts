@@ -11,10 +11,7 @@ export default class CustomerService {
   public async createCustomer(newCustomer: ICustomer): Promise<ServiceResponse<ICustomer>> {
     const { error } = customerSchema.validate(newCustomer);
     if (error) {
-      return {
-        status: BAD_REQUEST,
-        data: { message: error.message },
-      };
+      return { status: BAD_REQUEST, data: { message: error.message } };
     }
 
     const [customerCreated, created] = await this.customerModel.findOrCreate({
@@ -29,14 +26,10 @@ export default class CustomerService {
 
     if (!created) {
       return {
-        status: CONFLICT,
-        data: { message: 'Email or CPF already exists' },
+        status: CONFLICT, data: { message: 'Email or CPF already exists' },
       };
     }
 
-    return {
-      status: CREATED,
-      data: customerCreated,
-    }
+    return { status: CREATED, data: customerCreated };
   }
 }
