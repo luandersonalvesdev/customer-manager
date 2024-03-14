@@ -1,6 +1,7 @@
-/** @type {import('sequelize-cli').Migration} */
-module.exports = {
-  async up(queryInterface) {
+import { QueryInterface } from "sequelize";
+
+export default {
+  up: async (queryInterface: QueryInterface) => {
     await queryInterface.bulkInsert(
       'customers',
       [
@@ -45,12 +46,13 @@ module.exports = {
           updated_at: new Date(),
         },
       ],
+      {},
     );
 
     await queryInterface.sequelize.query("SELECT setval('customers_id_seq', max(id)) FROM customers;");
   },
 
-  async down(queryInterface) {
-    await queryInterface.bulkDelete('customers', null, {});
+  async down(queryInterface: QueryInterface) {
+    await queryInterface.bulkDelete('customers', {});
   },
 };
