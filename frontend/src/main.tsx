@@ -8,6 +8,7 @@ import ErrorPage from './pages/error/index.tsx';
 import DashboardPage from './pages/dashboard/';
 import CreateCustomerChildren from './pages/dashboard/createCustomerChildren';
 import ListCustomersChildren from './pages/dashboard/listCustomersChildren'
+import UpdateCustomerChildren from './pages/dashboard/updateCustomerChildren/index.tsx';
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/create-customer",
         element: <CreateCustomerChildren />
+      },
+      {
+        path: "/dashboard/update-customer/:customerId",
+        element: <UpdateCustomerChildren />
       }
     ]
   },

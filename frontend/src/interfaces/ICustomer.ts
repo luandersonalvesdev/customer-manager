@@ -20,3 +20,12 @@ export interface ICustomerForm {
   phoneNumber: string
   statusId: number
 }
+
+export interface ICustomerFormWithId {
+  id: number
+  fullName: string
+  email: string
+  cpf: string
+  phoneNumber: string
+  statusId: number
+}
