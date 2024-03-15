@@ -13,6 +13,15 @@ export const CUSTOMER_FORM_MOCK = {
   statusId: 1,
 }
 
+export const CUSTOMER_FORM_UPDATE_MOCK = {
+  id: 1,
+  fullName: VALID_FULLNAME_MOCK,
+  email: VALID_EMAIL_MOCK,
+  cpf: VALID_CPF_MOCK,
+  phoneNumber: VALID_PHONE_NUMBER_MOCK,
+  statusId: 1,
+}
+
 export const SUCCESS_CUSTOMER_CREATED_MOCK = {
   id: 1,
   fullName: VALID_FULLNAME_MOCK,
@@ -32,4 +41,9 @@ export const SUCCESS_RESPONSE_CREATED_CUSTOMER_MOCK = {
 export const SUCCESS_RESPONSE_GET_ALL_CUSTOMERS_MOCK = {
   status: 'SUCCESS',
   data: [SUCCESS_CUSTOMER_CREATED_MOCK]
+}
+
+export const SUCCESS_RESPONSE_UPDATE_CUSTOMER_MOCK = {
+  status: 'SUCCESS',
+  data: CUSTOMER_FORM_UPDATE_MOCK
 }
