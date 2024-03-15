@@ -12,10 +12,7 @@ class App {
     this.routes();
 
     this.app.get('/', (_req: express.Request, res: express.Response) => {
-      res.send(`
-        Server is healthy!
-        <a href="https://github.com/luandersonalvesdev/customer-manager"> Click here</a> to see the documentation.
-      `);
+      res.send('Server is healthy! <a href="https://github.com/luandersonalvesdev/customer-manager"> Click here</a> to see the documentation.');
     });
   }
 
