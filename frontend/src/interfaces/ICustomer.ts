@@ -12,3 +12,11 @@ export default interface ICustomer {
     name: string
   }
 }
+
+export interface ICustomerForm {
+  fullName: string
+  email: string
+  cpf: string
+  phoneNumber: string
+  statusId: number
+}

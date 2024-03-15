@@ -1,5 +1,5 @@
 import axios from "axios";
-import ICustomer from "../interfaces/ICustomer";
+import ICustomer, { ICustomerForm } from "../interfaces/ICustomer";
 
 const API_BASE_URL = 'http://localhost:3001';
 
@@ -12,5 +12,9 @@ export default class CustomerService {
   public async getAllCustomers(): Promise<ICustomer[]> {
     const response = await client.get('/customer');
     return response.data;
+  }
+
+  public async createCustomer(customerData: ICustomerForm): Promise<ICustomer> {
+    return client.post('/customer', customerData);
   }
 }
