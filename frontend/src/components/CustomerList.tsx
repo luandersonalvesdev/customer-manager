@@ -18,12 +18,15 @@ export default function CustomerList() {
   }, []);
 
   return (
-    <ul>
-      {
-        customers.map((customer) => {
-          return <CustomerCard customer={customer} key={customer.id} />
-        })
-      }
-    </ul>
+    <div>
+      <ul>
+        {
+          customers.map((customer) => {
+            return <CustomerCard customer={customer} key={customer.id} />
+          })
+        }
+      </ul>
+      <p>Exibindo {customers.length} clientes.</p>
+    </div>
   )
 }
