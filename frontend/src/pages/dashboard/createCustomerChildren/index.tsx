@@ -1,4 +1,4 @@
-import CustomerCreate from "../../../components/CustomerCreate";
+import CustomerCreate from "../../../components/CreateCustomer";
 
 export default function CreateCustomerChildren() {
   return (

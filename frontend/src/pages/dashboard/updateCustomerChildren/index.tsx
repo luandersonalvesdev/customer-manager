@@ -1,4 +1,4 @@
-import CustomerUpdate from "../../../components/CustomerUpdate";
+import CustomerUpdate from "../../../components/UpdateCustomer";
 
 export default function UpdateCustomerChildren() {
   return (
