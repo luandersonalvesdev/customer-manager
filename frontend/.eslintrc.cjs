@@ -16,5 +16,6 @@ module.exports = {
     ],
     'no-trailing-spaces': 'error',
     'eol-last': 'error',
+    '@typescript-eslint/no-explicit-any': 'warn',
   },
 }
