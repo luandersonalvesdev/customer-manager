@@ -4,19 +4,31 @@ import {
   RouterProvider,
   redirect
 } from "react-router-dom";
-import ErrorPage from './pages/ErrorPage.tsx';
-import DashboardPage from './pages/DashboardPage.tsx';
+import ErrorPage from './pages/error/index.tsx';
+import DashboardPage from './pages/dashboard/';
+import CreateCustomerChildren from './pages/dashboard/createCustomerChildren';
+import ListCustomersChildren from './pages/dashboard/listCustomersChildren'
 
 const router = createBrowserRouter([
   {
     path: "/",
-    loader: () => redirect('/dashboard'),
+    loader: () => redirect('/dashboard/list'),
     errorElement: <ErrorPage />,
   },
   {
     path: "/dashboard",
-    element: <DashboardPage />
-  }
+    element: <DashboardPage />,
+    children: [
+      {
+        path: "/dashboard/list",
+        element: <ListCustomersChildren />
+      },
+      {
+        path: "/dashboard/create-customer",
+        element: <CreateCustomerChildren />
+      }
+    ]
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
