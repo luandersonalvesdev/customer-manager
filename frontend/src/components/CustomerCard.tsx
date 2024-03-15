@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import ICustomer from "../interfaces/ICustomer";
 
 export default function CustomerCard({ customer }: { customer: ICustomer }) {
@@ -33,6 +34,7 @@ export default function CustomerCard({ customer }: { customer: ICustomer }) {
             }
           }></div>
           <p>{customer.status.name}</p>
+        <Link to={`/dashboard/update-customer/${customer.id}`}>Editar</Link>
       </div>
     </li>
   )
