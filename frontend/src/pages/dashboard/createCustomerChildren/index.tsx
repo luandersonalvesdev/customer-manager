@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import CustomerCreate from "../../../components/CustomerCreate";
 
 export default function CreateCustomerChildren() {
   return (
@@ -7,7 +7,7 @@ export default function CreateCustomerChildren() {
         <p>Novo usuário</p>
         <p>Informe os campos a seguir para criar novo usuário:</p>
       </div>
-      <Link to="/dashboard/list">Voltar</Link>
+      <CustomerCreate />
     </div>
   )
 }
