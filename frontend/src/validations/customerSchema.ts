@@ -13,11 +13,11 @@ const zCustomerSchema = z
     cpf: z
       .string()
       .trim()
-      .length(11, 'Invalid CPF.'),
+      .length(14, 'Invalid CPF.'),
     phoneNumber: z
       .string()
       .trim()
-      .min(11, 'Invalid phone number.'),
+      .min(14, 'Invalid phone number.'),
     statusId: z
       .number()
       .min(1, 'status is required.'),

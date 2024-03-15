@@ -5,6 +5,9 @@ import zCustomerSchema from '../validations/customerSchema';
 import { ICustomerForm } from '../interfaces/ICustomer'
 import ICustomerStatus from '../interfaces/ICustomerStatus'
 import CustomerService from '../services/CustomerService';
+import cpfMask from '../masks/cpfMask';
+import phoneNumberMask from '../masks/phoneNumberMask';
+import { removeSpecialCharacters } from '../utils/formatters';
 
 export default function CreateCustomerForm({ customerStatuses }: {customerStatuses: ICustomerStatus[]}) {
   const {
@@ -12,6 +15,8 @@ export default function CreateCustomerForm({ customerStatuses }: {customerStatus
     handleSubmit,
     reset,
     setError,
+    setValue,
+    clearErrors,
     formState: {
       errors,
       isSubmitting,
@@ -20,14 +25,19 @@ export default function CreateCustomerForm({ customerStatuses }: {customerStatus
     resolver: zodResolver(zCustomerSchema),
   });
 
-  const handleInputChangeMask = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-    const numericValue = value.replace(/\D/g, '');
-    e.target.value = numericValue;
+  const handleInputChangeMask = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    const maskedValue = name === 'cpf' ? cpfMask(value) : phoneNumberMask(value);
+    setValue(name as 'cpf' | 'phoneNumber', maskedValue);
+    if(maskedValue.length === 14) {
+      clearErrors(name as 'cpf' | 'phoneNumber');
+    }
   };
 
   const onSubmit = async (customerData: ICustomerForm) => {
     try {
+      customerData.cpf = removeSpecialCharacters(customerData.cpf)
+      customerData.phoneNumber = removeSpecialCharacters(customerData.phoneNumber)
       const service = new CustomerService();
       await service.createCustomer(customerData);
       reset();
@@ -62,7 +72,7 @@ export default function CreateCustomerForm({ customerStatuses }: {customerStatus
           placeholder={(errors.cpf?.message || "CPF").toString()}
           {...register('cpf')}
           onChange={handleInputChangeMask}
-          maxLength={11}
+          maxLength={14}
         />
         <span>{ errors.cpf?.message?.toString()}</span>
       </div>
@@ -72,7 +82,7 @@ export default function CreateCustomerForm({ customerStatuses }: {customerStatus
           placeholder={(errors.phoneNumber?.message || "Telefone").toString()}
           {...register('phoneNumber')}
           onChange={handleInputChangeMask}
-          maxLength={11}
+          maxLength={14}
         />
         <span>{ errors.phoneNumber?.message?.toString()}</span>
       </div>

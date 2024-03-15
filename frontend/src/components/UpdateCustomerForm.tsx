@@ -6,6 +6,9 @@ import ICustomer, { ICustomerForm } from '../interfaces/ICustomer'
 import ICustomerStatus from '../interfaces/ICustomerStatus'
 import CustomerService from '../services/CustomerService';
 import { useEffect } from 'react';
+import cpfMask from '../masks/cpfMask';
+import phoneNumberMask from '../masks/phoneNumberMask';
+import { removeSpecialCharacters } from '../utils/formatters';
 
 export default function UpdateCustomerForm(
   { customerStatuses, customer }:
@@ -16,6 +19,7 @@ export default function UpdateCustomerForm(
     handleSubmit,
     setError,
     setValue,
+    clearErrors,
     formState: {
       errors,
       isSubmitting,
@@ -25,21 +29,26 @@ export default function UpdateCustomerForm(
   });
 
   useEffect(() => {
-    setValue('fullName', customer.fullName);
-    setValue('email', customer.email);
-    setValue('cpf', customer.cpf);
-    setValue('phoneNumber', customer.phoneNumber);
-    setValue('statusId', customer.statusId);
+    setValue('fullName', customer.fullName || '');
+    setValue('email', customer.email || '');
+    setValue('cpf', customer.cpf ? cpfMask(customer.cpf) : '');
+    setValue('phoneNumber', customer.phoneNumber ?  phoneNumberMask(customer.phoneNumber) : '');
+    setValue('statusId', customer.statusId || 0);
   }, [customer]);
 
-  const handleInputChangeMask = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-    const numericValue = value.replace(/\D/g, '');
-    e.target.value = numericValue;
+  const handleInputChangeMask = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    const maskedValue = name === 'cpf' ? cpfMask(value) : phoneNumberMask(value);
+    setValue(name as 'cpf' | 'phoneNumber', maskedValue);
+    if(maskedValue.length === 14) {
+      clearErrors(name as 'cpf' | 'phoneNumber');
+    }
   };
 
   const onSubmit = async (customerData: ICustomerForm) => {
     try {
+      customerData.cpf = removeSpecialCharacters(customerData.cpf)
+      customerData.phoneNumber = removeSpecialCharacters(customerData.phoneNumber)
       const service = new CustomerService();
       await service.updateCustomer({...customerData, id: customer.id});
     } catch (err: any) {
@@ -73,7 +82,7 @@ export default function UpdateCustomerForm(
           placeholder={(errors.cpf?.message || "CPF").toString()}
           {...register('cpf')}
           onChange={handleInputChangeMask}
-          maxLength={11}
+          maxLength={14}
         />
         <span>{ errors.cpf?.message?.toString()}</span>
       </div>
@@ -83,7 +92,7 @@ export default function UpdateCustomerForm(
           placeholder={(errors.phoneNumber?.message || "Telefone").toString()}
           {...register('phoneNumber')}
           onChange={handleInputChangeMask}
-          maxLength={11}
+          maxLength={14}
         />
         <span>{ errors.phoneNumber?.message?.toString()}</span>
       </div>

@@ -19,3 +19,7 @@ export const formatCPF = (cpf: string) => {
 
   return cpf;
 }
+
+export const removeSpecialCharacters = (value: string) => {
+  return value.replace(/\D/g, '');
+};
