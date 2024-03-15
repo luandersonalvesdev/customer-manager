@@ -1,12 +1,12 @@
-import UpdateCustomerForm from "./UpdateCustomerForm";
-import CustomerStatusService from '../services/CustomerStatusService';
+import UpdateCustomerForm from "../../../components/forms/UpdateCustomerForm";
+import CustomerStatusService from '../../../services/CustomerStatusService';
 import { useEffect, useState } from "react";
-import ICustomerStatus from "../interfaces/ICustomerStatus";
-import ICustomer from "../interfaces/ICustomer";
+import ICustomerStatus from "../../../interfaces/ICustomerStatus";
+import ICustomer from "../../../interfaces/ICustomer";
 import { useParams } from "react-router-dom";
-import CustomerService from "../services/CustomerService";
+import CustomerService from "../../../services/CustomerService";
 
-export default function CustomerUpdate() {
+export default function UpdateCustomer() {
   const [customerStatuses, setCustomerStatuses] = useState<ICustomerStatus[]>([]);
   const [customer, setCustomer] = useState<ICustomer>({} as ICustomer);
   const { customerId } = useParams<{customerId: string}>();

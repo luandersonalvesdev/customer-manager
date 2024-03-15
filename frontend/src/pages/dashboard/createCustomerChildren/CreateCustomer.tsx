@@ -1,9 +1,9 @@
-import CreateCustomerForm from "./CreateCustomerForm";
-import CustomerStatusService from '../services/CustomerStatusService';
+import CreateCustomerForm from "../../../components/forms/CreateCustomerForm";
+import CustomerStatusService from '../../../services/CustomerStatusService';
 import { useEffect, useState } from "react";
-import ICustomerStatus from "../interfaces/ICustomerStatus";
+import ICustomerStatus from "../../../interfaces/ICustomerStatus";
 
-export default function CustomerCreate() {
+export default function CreateCustomer() {
   const [customerStatuses, setCustomerStatuses] = useState<ICustomerStatus[]>([]);
 
   useEffect(() => {

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import CustomerList from "../../../components/CustomerList";
+import CustomerList from "./CustomerList";
 
 export default function ListCustomersChildren() {
   return (

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import CustomerService from "../services/CustomerService";
-import ICustomer from "../interfaces/ICustomer";
-import CustomerCard from "./CustomerCard";
+import CustomerService from "../../../services/CustomerService";
+import ICustomer from "../../../interfaces/ICustomer";
+import CustomerCard from "../../../components/CustomerCard";
 
 export default function CustomerList() {
   const [customers, setCustomers] = useState<ICustomer[]>([]);

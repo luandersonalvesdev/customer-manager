@@ -1,4 +1,4 @@
-import CustomerCreate from "../../../components/CreateCustomer";
+import CreateCustomer from "./CreateCustomer";
 
 export default function CreateCustomerChildren() {
   return (
@@ -7,7 +7,7 @@ export default function CreateCustomerChildren() {
         <p>Novo usuário</p>
         <p>Informe os campos a seguir para criar novo usuário:</p>
       </div>
-      <CustomerCreate />
+      <CreateCustomer />
     </div>
   )
 }

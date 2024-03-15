@@ -1,14 +1,14 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
-import zCustomerSchema from '../validations/customerSchema';
-import ICustomer, { ICustomerForm } from '../interfaces/ICustomer'
-import ICustomerStatus from '../interfaces/ICustomerStatus'
-import CustomerService from '../services/CustomerService';
+import zCustomerSchema from '../../validations/customerSchema';
+import ICustomer, { ICustomerForm } from '../../interfaces/ICustomer'
+import ICustomerStatus from '../../interfaces/ICustomerStatus'
+import CustomerService from '../../services/CustomerService';
 import { useEffect } from 'react';
-import cpfMask from '../masks/cpfMask';
-import phoneNumberMask from '../masks/phoneNumberMask';
-import { removeSpecialCharacters } from '../utils/formatters';
+import cpfMask from '../../masks/cpfMask';
+import phoneNumberMask from '../../masks/phoneNumberMask';
+import { removeSpecialCharacters } from '../../utils/formatters';
 
 export default function UpdateCustomerForm(
   { customerStatuses, customer }:
