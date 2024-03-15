@@ -6,7 +6,7 @@ import CustomerService from '../../../src/services/CustomerService';
 import CustomerController from '../../../src/controllers/CustomerController';
 import {
   CUSTOMER_FORM_MOCK, SUCCESS_RESPONSE_CREATED_CUSTOMER_MOCK, SUCCESS_RESPONSE_GET_ALL_CUSTOMERS_MOCK,
-  SUCCESS_RESPONSE_UPDATE_CUSTOMER_MOCK, CUSTOMER_FORM_UPDATE_MOCK
+  SUCCESS_RESPONSE_UPDATE_CUSTOMER_MOCK, CUSTOMER_FORM_UPDATE_MOCK, SUCCESS_RESPONSE_GET_BY_ID_CUSTOMER_MOCK
 } from '../../mocks/customer.mock';
 
 describe('Customer Controller Unit Tests', () => {
@@ -68,5 +68,24 @@ describe('Customer Controller Unit Tests', () => {
 
     expect((res.json as sinon.SinonStub).calledOnce).to.be.true;
     expect((res.json as sinon.SinonStub).calledWith(SUCCESS_RESPONSE_UPDATE_CUSTOMER_MOCK.data)).to.be.true;
+  });
+
+  it('Should get a customer by id', async () => {
+    sinon.stub(CustomerService.prototype, 'getCustomerById').resolves(SUCCESS_RESPONSE_GET_BY_ID_CUSTOMER_MOCK as any);
+    const req: Partial<Request> = { params: { id: "1" } };
+    const res: Partial<Response> = {
+      status: sinon.stub().returnsThis(),
+      json: sinon.stub(),
+    };
+
+    const customerController = new CustomerController();
+
+    await customerController.getCustomerById(req as Request, res as Response);
+
+    expect((res.status as sinon.SinonStub).calledOnce).to.be.true;
+    expect((res.status as sinon.SinonStub).calledWith(200)).to.be.true;
+
+    expect((res.json as sinon.SinonStub).calledOnce).to.be.true;
+    expect((res.json as sinon.SinonStub).calledWith(SUCCESS_RESPONSE_GET_BY_ID_CUSTOMER_MOCK.data)).to.be.true;
   });
 });
