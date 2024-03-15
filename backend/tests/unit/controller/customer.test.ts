@@ -32,9 +32,28 @@ describe('Customer Controller Unit Tests', () => {
     expect((res.json as sinon.SinonStub).calledWith(SUCCESS_RESPONSE_CREATED_CUSTOMER_MOCK.data)).to.be.true;
   });
 
-  it('Should get all customers', async () => {
+  it('Should get all customers with limit and offset', async () => {
     sinon.stub(CustomerService.prototype, 'getAllCustomers').resolves(SUCCESS_RESPONSE_GET_ALL_CUSTOMERS_MOCK as any);
     const req: Partial<Request> = { query: { limit: "10", offset: "0" } };
+    const res: Partial<Response> = {
+      status: sinon.stub().returnsThis(),
+      json: sinon.stub(),
+    };
+
+    const customerController = new CustomerController();
+
+    await customerController.getAllCustomers(req as Request, res as Response);
+
+    expect((res.status as sinon.SinonStub).calledOnce).to.be.true;
+    expect((res.status as sinon.SinonStub).calledWith(200)).to.be.true;
+
+    expect((res.json as sinon.SinonStub).calledOnce).to.be.true;
+    expect((res.json as sinon.SinonStub).calledWith(SUCCESS_RESPONSE_GET_ALL_CUSTOMERS_MOCK.data)).to.be.true;
+  });
+
+  it('Should get all customers without limit and offset', async () => {
+    sinon.stub(CustomerService.prototype, 'getAllCustomers').resolves(SUCCESS_RESPONSE_GET_ALL_CUSTOMERS_MOCK as any);
+    const req: Partial<Request> = { query: {} };
     const res: Partial<Response> = {
       status: sinon.stub().returnsThis(),
       json: sinon.stub(),
