@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import ICustomer from "../interfaces/ICustomer";
+import { formatPhoneNumber, formatCPF } from "../utils/formatters";
 
 export default function CustomerCard({ customer }: { customer: ICustomer }) {
   const getStatusColor = (statusId: number): string => {
@@ -20,8 +21,8 @@ export default function CustomerCard({ customer }: { customer: ICustomer }) {
         <p>{customer.email}</p>
       </div>
       <div>
-        <p>{customer.cpf}</p>
-        <p>{customer.phoneNumber}</p>
+        <p>{formatCPF(customer.cpf)}</p>
+        <p>{formatPhoneNumber(customer.phoneNumber)}</p>
       </div>
       <div>
         <div
