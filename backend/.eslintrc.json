@@ -10,5 +10,5 @@
     "import/no-extraneous-dependencies": "off",
     "eol-last": "error"
   },
-  "ignorePatterns": ["build/**/*"]
+  "ignorePatterns": ["build/**/*", "tests/"]
 }

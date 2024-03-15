@@ -5,6 +5,7 @@
   "main": "./build/server.js",
   "scripts": {
     "test": "mocha -r ts-node/register ./tests/**/*$NAME*.{test,spec}.ts",
+    "test:coverage": "nyc npm test",
     "build": "tsc --project tsconfig.json",
     "prestart": "npm run build",
     "start": "node ./build/server.js",
