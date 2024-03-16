@@ -15,7 +15,7 @@ input, select {
 }
 
 .link-empty {
-  @apply bg-transparent border text-uol-btn border-uol-btn h-full text-center px-1 md:px-3 py-1 md:py-1.5 rounded hover:brightness-110 hover:text-white hover:bg-uol-btn duration-300;
+  @apply bg-transparent border text-uol-btn border-uol-btn h-full text-center py-1.5 rounded hover:brightness-110 hover:text-white hover:bg-uol-btn duration-300;
 }
 
 .customer-card {

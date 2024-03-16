@@ -59,14 +59,14 @@ export default function UpdateCustomerForm(
   const isButtonDisabled = Object.keys(errors).filter((key) => key !== 'root').length > 0;
 
   return (
-    <form onSubmit={ handleSubmit(onSubmit) }>
+    <form onSubmit={ handleSubmit(onSubmit) } className="divide-y-[15px] divide-transparent max-w-60 flex flex-col">
       <div>
         <input
           type="text"
           placeholder={(errors.fullName?.message || "Nome").toString()}
           {...register('fullName')}
         />
-        <span>{ errors.fullName?.message?.toString()}</span>
+        {errors.fullName && <span className="input-error">{ errors.fullName?.message?.toString()}</span>}
       </div>
       <div>
         <input
@@ -74,7 +74,7 @@ export default function UpdateCustomerForm(
           placeholder={(errors.email?.message || "E-mail").toString()}
           {...register('email')}
         />
-        <span>{ errors.email?.message?.toString()}</span>
+        {errors.email && <span className="input-error">{ errors.email?.message?.toString()}</span>}
       </div>
       <div>
         <input
@@ -84,7 +84,8 @@ export default function UpdateCustomerForm(
           onChange={handleInputChangeMask}
           maxLength={14}
         />
-        <span>{ errors.cpf?.message?.toString()}</span>
+        {errors.cpf && <span className="input-error">{ errors.cpf?.message?.toString()}</span>}
+
       </div>
       <div>
         <input
@@ -94,7 +95,8 @@ export default function UpdateCustomerForm(
           onChange={handleInputChangeMask}
           maxLength={14}
         />
-        <span>{ errors.phoneNumber?.message?.toString()}</span>
+        {errors.phoneNumber && <span className="input-error">{ errors.phoneNumber?.message?.toString()}</span>}
+
       </div>
       <div>
         <select
@@ -114,17 +116,22 @@ export default function UpdateCustomerForm(
             ))
           }
         </select>
-        <span>{ errors.statusId?.message?.toString()}</span>
+        {errors.statusId && <span className="input-error">{ errors.statusId?.message?.toString()}</span>}
       </div>
 
-      <p>{ errors.root?.message?.toString()}</p>
+      <div>
+        {errors.root && <span className="input-error">{ errors.root?.message?.toString()}</span>}
+      </div>
 
-      <button
-        disabled={isButtonDisabled || isSubmitting}
-      >
-        Atualizar
-      </button>
-      <Link to="/dashboard">Voltar</Link>
+      <div className="flex w-full gap-2">
+        <button
+          className="bg-uol-btn text-white py-1.5 rounded hover:brightness-110 duration-300 flex-1 hover:cursor-pointer"
+          disabled={isButtonDisabled || isSubmitting}
+        >
+          Atualizar
+        </button>
+        <Link className='link-empty flex-1 md:px-0' to="/dashboard">Voltar</Link>
+      </div>
     </form>
   )
 }
