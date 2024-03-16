@@ -7,7 +7,9 @@ import customerSchema from '../../../src/validations/customerSchema';
 import {
   CUSTOMER_FORM_MOCK, SUCCESS_RESPONSE_CREATED_CUSTOMER_MOCK, INVALID_CUSTOMER_FORM_MOCK, ERROR_RESPONSE_CREATED_CUSTOMER_INVALID_MOCK,
   ERROR_RESPONSE_CREATED_CUSTOMER_EXISTS_MOCK, SUCCESS_RESPONSE_GET_ALL_CUSTOMERS_MOCK, SUCCESS_RESPONSE_UPDATE_CUSTOMER_MOCK,
-  CUSTOMER_FORM_UPDATE_MOCK, ERROR_RESPONSE_UPDATED_CUSTOMER_INVALID_MOCK
+  CUSTOMER_FORM_UPDATE_MOCK, ERROR_RESPONSE_UPDATED_CUSTOMER_INVALID_MOCK, SUCCESS_RESPONSE_GET_BY_ID_CUSTOMER_MOCK,
+  ERROR_RESPONSE_GET_BY_ID_CUSTOMER_MOCK,
+  ERROR_RESPONSE_GET_BY_ID_THROW_CUSTOMER_MOCK,
 } from '../../mocks/customer.mock';
 
 describe('Customer Service Unit Tests', () => {
@@ -49,6 +51,17 @@ describe('Customer Service Unit Tests', () => {
   
       expect(response.status).to.be.equal(SUCCESS_RESPONSE_UPDATE_CUSTOMER_MOCK.status);
       expect(response.data).to.be.deep.equal(SUCCESS_RESPONSE_UPDATE_CUSTOMER_MOCK.data);
+    });
+
+    it('Should get a customer by id', async () => {
+      sinon.stub(SequelizeCustomer, 'findOne').resolves(SUCCESS_RESPONSE_GET_BY_ID_CUSTOMER_MOCK.data as any);
+  
+      const customerService = new CustomerService();
+  
+      const response = await customerService.getCustomerById(1 as any);
+  
+      expect(response.status).to.be.equal(SUCCESS_RESPONSE_GET_BY_ID_CUSTOMER_MOCK.status);
+      expect(response.data).to.be.deep.equal(SUCCESS_RESPONSE_GET_BY_ID_CUSTOMER_MOCK.data);
     });
   });
 
@@ -97,6 +110,26 @@ describe('Customer Service Unit Tests', () => {
   
       expect(response.status).to.be.equal(ERROR_RESPONSE_UPDATED_CUSTOMER_INVALID_MOCK.status);
       expect(response.data).to.be.deep.equal(ERROR_RESPONSE_UPDATED_CUSTOMER_INVALID_MOCK.data);
+    });
+
+    it('Should NOT FOUND a customer by id', async () => {
+      sinon.stub(SequelizeCustomer, 'findOne').resolves(null);
+  
+      const customerService = new CustomerService();
+  
+      const response = await customerService.getCustomerById(0 as any);
+  
+      expect(response.status).to.be.equal(ERROR_RESPONSE_GET_BY_ID_CUSTOMER_MOCK.status);
+      expect(response.data).to.be.deep.equal(ERROR_RESPONSE_GET_BY_ID_CUSTOMER_MOCK.data);
+    });
+
+    it('Should THROW ERROR because id is not a number', async () => {  
+      const customerService = new CustomerService();
+  
+      const response = await customerService.getCustomerById('0' as any);
+  
+      expect(response.status).to.be.equal(ERROR_RESPONSE_GET_BY_ID_THROW_CUSTOMER_MOCK.status);
+      expect(response.data).to.be.deep.equal(ERROR_RESPONSE_GET_BY_ID_THROW_CUSTOMER_MOCK.data);
     });
   });
 

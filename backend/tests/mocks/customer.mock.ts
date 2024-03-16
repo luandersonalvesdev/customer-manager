@@ -82,3 +82,13 @@ export const ERROR_RESPONSE_CREATED_CUSTOMER_EXISTS_MOCK = {
   status: 'CONFLICT',
   data: { message: 'Email or CPF already exists' }
 }
+
+export const ERROR_RESPONSE_GET_BY_ID_CUSTOMER_MOCK = {
+  status: 'NOT_FOUND',
+  data: { message: 'Customer not found.' }
+}
+
+export const ERROR_RESPONSE_GET_BY_ID_THROW_CUSTOMER_MOCK = {
+  status: 'BAD_REQUEST',
+  data: { message: 'Id is not a number.' }
+}
