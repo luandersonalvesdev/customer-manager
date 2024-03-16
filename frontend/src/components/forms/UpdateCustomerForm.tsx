@@ -11,6 +11,7 @@ import phoneNumberMask from '../../masks/phoneNumberMask';
 import { removeSpecialCharacters } from '../../utils/formatters';
 import { toast } from 'react-toastify';
 import LoadingSpinner from '../../animations/LoadingSpinner';
+import handleInputChangeMask from '../../utils/handleInputChangeMask';
 
 export default function UpdateCustomerForm(
   { customerStatuses, customer }:
@@ -38,15 +39,6 @@ export default function UpdateCustomerForm(
     setValue('statusId', customer.statusId);
   }, []);
 
-  const handleInputChangeMask = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-    const maskedValue = name === 'cpf' ? cpfMask(value) : phoneNumberMask(value);
-    setValue(name as 'cpf' | 'phoneNumber', maskedValue);
-    if(maskedValue.length === 14) {
-      clearErrors(name as 'cpf' | 'phoneNumber');
-    }
-  };
-
   const onSubmit = async (customerData: ICustomerForm) => {
     try {
       customerData.cpf = removeSpecialCharacters(customerData.cpf)
@@ -63,45 +55,45 @@ export default function UpdateCustomerForm(
 
   return (
     <form onSubmit={ handleSubmit(onSubmit) } className="divide-y-[15px] divide-transparent max-w-60 flex flex-col">
-      <div>
+      <section>
         <input
           type="text"
           placeholder={(errors.fullName?.message || "Nome").toString()}
           {...register('fullName')}
         />
         {errors.fullName && <span className="input-error">{ errors.fullName?.message?.toString()}</span>}
-      </div>
-      <div>
+      </section>
+      <section>
         <input
           type="text"
           placeholder={(errors.email?.message || "E-mail").toString()}
           {...register('email')}
         />
         {errors.email && <span className="input-error">{ errors.email?.message?.toString()}</span>}
-      </div>
-      <div>
+      </section>
+      <section>
         <input
           type="text"
           placeholder={(errors.cpf?.message || "CPF").toString()}
           {...register('cpf')}
-          onChange={handleInputChangeMask}
+          onChange={(e) => handleInputChangeMask(e, setValue, clearErrors)}
           maxLength={14}
         />
         {errors.cpf && <span className="input-error">{ errors.cpf?.message?.toString()}</span>}
 
-      </div>
-      <div>
+      </section>
+      <section>
         <input
           type="text"
           placeholder={(errors.phoneNumber?.message || "Telefone").toString()}
           {...register('phoneNumber')}
-          onChange={handleInputChangeMask}
+          onChange={(e) => handleInputChangeMask(e, setValue, clearErrors)}
           maxLength={14}
         />
         {errors.phoneNumber && <span className="input-error">{ errors.phoneNumber?.message?.toString()}</span>}
 
-      </div>
-      <div>
+      </section>
+      <section>
         <select
           {...register('statusId', {
             setValueAs: (value) => Number(value),
@@ -120,13 +112,13 @@ export default function UpdateCustomerForm(
           }
         </select>
         {errors.statusId && <span className="input-error">{ errors.statusId?.message?.toString()}</span>}
-      </div>
+      </section>
 
-      <div>
+      <section>
         {errors.root && <span className="input-error">{ errors.root?.message?.toString()}</span>}
-      </div>
+      </section>
 
-      <div className="flex w-full gap-2">
+      <section className="flex w-full gap-2">
         <button
           className="btn-form"
           disabled={isButtonDisabled || isSubmitting}
@@ -134,7 +126,7 @@ export default function UpdateCustomerForm(
           {isSubmitting ? <LoadingSpinner /> : 'Atualizar'}
         </button>
         <Link className='link-empty flex-1 md:px-0' to="/dashboard">Voltar</Link>
-      </div>
+      </section>
     </form>
   )
 }
