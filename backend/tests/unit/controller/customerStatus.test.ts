@@ -8,7 +8,7 @@ import {
   SUCCESS_RESPONSE_GET_ALL_MOCK
 } from '../../mocks/customerStatus.mock';
 
-describe('Customer Controller Unit Tests', () => {
+describe('CustomerStatus Controller Unit Tests', () => {
 
   afterEach(() => sinon.restore());
 

@@ -13,6 +13,13 @@ export const CUSTOMER_FORM_MOCK = {
   statusId: 1,
 }
 
+export const INVALID_CUSTOMER_FORM_MOCK = {
+  email: VALID_EMAIL_MOCK,
+  cpf: VALID_CPF_MOCK,
+  phoneNumber: VALID_PHONE_NUMBER_MOCK,
+  statusId: 1,
+}
+
 export const CUSTOMER_FORM_UPDATE_MOCK = {
   id: 1,
   fullName: VALID_FULLNAME_MOCK,
@@ -33,7 +40,7 @@ export const SUCCESS_CUSTOMER_CREATED_MOCK = {
   updatedAt: VALID_UPDATED_AT_MOCK,
 }
 
-export const CUSTOMER_FROM_DB_MOCK = {
+export const CUSTOMER_WITH_STATUS_MOCK = {
   ...SUCCESS_CUSTOMER_CREATED_MOCK,
   status: {
     id: 1,
@@ -43,12 +50,12 @@ export const CUSTOMER_FROM_DB_MOCK = {
 
 export const SUCCESS_RESPONSE_CREATED_CUSTOMER_MOCK = {
   status: 'CREATED',
-  data: CUSTOMER_FROM_DB_MOCK
+  data: SUCCESS_CUSTOMER_CREATED_MOCK
 }
 
 export const SUCCESS_RESPONSE_GET_ALL_CUSTOMERS_MOCK = {
   status: 'SUCCESS',
-  data: [CUSTOMER_FROM_DB_MOCK]
+  data: [CUSTOMER_WITH_STATUS_MOCK]
 }
 
 export const SUCCESS_RESPONSE_UPDATE_CUSTOMER_MOCK = {
@@ -58,5 +65,15 @@ export const SUCCESS_RESPONSE_UPDATE_CUSTOMER_MOCK = {
 
 export const SUCCESS_RESPONSE_GET_BY_ID_CUSTOMER_MOCK = {
   status: 'SUCCESS',
-  data: CUSTOMER_FROM_DB_MOCK
+  data: SUCCESS_CUSTOMER_CREATED_MOCK
+}
+
+export const ERROR_RESPONSE_CREATED_CUSTOMER_INVALID_MOCK = {
+  status: 'BAD_REQUEST',
+  data: { message: 'fullName is required' }
+}
+
+export const ERROR_RESPONSE_CREATED_CUSTOMER_EXISTS_MOCK = {
+  status: 'CONFLICT',
+  data: { message: 'Email or CPF already exists' }
 }
