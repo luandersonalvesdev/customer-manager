@@ -9,6 +9,7 @@ import DashboardPage from './pages/dashboard/';
 import CreateCustomerChildren from './pages/dashboard/createCustomerChildren';
 import ListCustomersChildren from './pages/dashboard/listCustomersChildren'
 import UpdateCustomerChildren from './pages/dashboard/updateCustomerChildren/index.tsx';
+import './index.css'
 
 const router = createBrowserRouter([
   {
