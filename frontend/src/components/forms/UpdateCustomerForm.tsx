@@ -124,7 +124,7 @@ export default function UpdateCustomerForm(
       >
         Atualizar
       </button>
-      <Link to="/dashboard/list">Voltar</Link>
+      <Link to="/dashboard">Voltar</Link>
     </form>
   )
 }

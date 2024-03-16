@@ -114,7 +114,7 @@ export default function CreateCustomerForm({ customerStatuses }: {customerStatus
       >
         Criar
       </button>
-      <Link to="/dashboard/list">Voltar</Link>
+      <Link to="/dashboard">Voltar</Link>
     </form>
   )
 }
