@@ -11,6 +11,7 @@ import ListCustomersChildren from './pages/Dashboard/ListCustomersChild/'
 import UpdateCustomerChildren from './pages/Dashboard/UpdateCustomerChild/';
 import './index.css'
 import 'react-toastify/dist/ReactToastify.css';
+import UpdateCustomerError from './pages/Dashboard/UpdateCustomerChild/UpdateCustomerError';
 
 const router = createBrowserRouter([
   {
@@ -32,8 +33,9 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/update-customer/:customerId",
-        element: <UpdateCustomerChildren />
-      }
+        element: <UpdateCustomerChildren />,
+        errorElement: <UpdateCustomerError />
+      },
     ]
   },
 ]);
