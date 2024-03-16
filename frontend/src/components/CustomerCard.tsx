@@ -29,7 +29,7 @@ export default function CustomerCard({ customer }: { customer: ICustomer }) {
         <p>{customer.status.name}</p>
       </div>
       <Link
-        className="link-empty"
+        className="link-empty px-3 md:px-10"
         to={`/dashboard/update-customer/${customer.id}`}
       >
         Editar
