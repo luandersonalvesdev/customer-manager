@@ -9,6 +9,7 @@ import cpfMask from '../../masks/cpfMask';
 import phoneNumberMask from '../../masks/phoneNumberMask';
 import { removeSpecialCharacters } from '../../utils/formatters';
 import { toast } from 'react-toastify';
+import LoadingSpinner from '../../animations/LoadingSpinner';
 
 export default function CreateCustomerForm({ customerStatuses }: {customerStatuses: ICustomerStatus[]}) {
   const {
@@ -119,10 +120,10 @@ export default function CreateCustomerForm({ customerStatuses }: {customerStatus
 
       <div className="flex w-full gap-2">
         <button
-          className="bg-uol-btn text-white py-1.5 rounded hover:brightness-110 duration-300 flex-1 hover:cursor-pointer"
+          className="btn-form"
           disabled={isButtonDisabled || isSubmitting}
         >
-          Criar
+          {isSubmitting ? <LoadingSpinner /> : 'Criar'}
         </button>
         <Link
           className="link-empty flex-1 md:px-0"
