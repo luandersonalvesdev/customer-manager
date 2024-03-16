@@ -73,6 +73,11 @@ export const ERROR_RESPONSE_CREATED_CUSTOMER_INVALID_MOCK = {
   data: { message: 'fullName is required' }
 }
 
+export const ERROR_RESPONSE_UPDATED_CUSTOMER_INVALID_MOCK = {
+  status: 'BAD_REQUEST',
+  data: { message: '"id" is required' }
+}
+
 export const ERROR_RESPONSE_CREATED_CUSTOMER_EXISTS_MOCK = {
   status: 'CONFLICT',
   data: { message: 'Email or CPF already exists' }

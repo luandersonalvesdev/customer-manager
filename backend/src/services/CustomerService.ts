@@ -61,7 +61,7 @@ export default class CustomerService {
     });
 
     if (existingCustomer) {
-      return { status: CONFLICT, data: { message: 'Email or CPF already exists.' } };
+      return { status: CONFLICT, data: { message: 'Email or CPF already exists' } };
     }
 
     await this.customerModel.update(newCustomerData, {
