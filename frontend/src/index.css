@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+input, select {
+  @apply py-2 px-2 border bg-transparent border-gray-400 rounded outline-none md:text-lg text-sm w-full;
+}
+
+.input-error {
+  @apply border border-red-300 bg-red-50 text-red-500 py-1 text-xs md:text-sm rounded block mt-1 md:mb-2 text-center;
+}
+
+.link-full {
+  @apply bg-uol-btn text-white h-full text-center px-1 md:px-3 py-1.5 rounded hover:brightness-110 duration-300;
+}
+
+.link-empty {
+  @apply bg-transparent border text-uol-btn border-uol-btn h-full text-center px-1 md:px-3 py-1 md:py-1.5 rounded hover:brightness-110 hover:text-white hover:bg-uol-btn duration-300;
+}
+
+.customer-card {
+  @apply flex justify-between items-center border border-gray-300 mb-3 px-3 md:px-7 py-1.5 md:py-3 text-xss md:text-base;
+}

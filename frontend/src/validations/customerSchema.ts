@@ -5,22 +5,22 @@ const zCustomerSchema = z
     fullName: z
       .string()
       .trim()
-      .min(1, 'Name is required.'),
+      .min(1, 'Nome é obrigatório'),
     email: z
       .string()
-      .min(1, 'Email is required.')
-      .email(),
+      .min(1, 'E-mail é obrigatório')
+      .email('E-mail inválido'),
     cpf: z
       .string()
       .trim()
-      .length(14, 'Invalid CPF.'),
+      .length(14, 'CPF inválido'),
     phoneNumber: z
       .string()
       .trim()
-      .min(14, 'Invalid phone number.'),
+      .min(14, 'Telefone deve ter 11 números'),
     statusId: z
       .number()
-      .min(1, 'status is required.'),
+      .min(1, 'Status é obrigatório'),
   })
   .required();
 

@@ -49,42 +49,42 @@ export default function CreateCustomerForm({ customerStatuses }: {customerStatus
   const isButtonDisabled = Object.keys(errors).filter((key) => key !== 'root').length > 0;
 
   return (
-    <form onSubmit={ handleSubmit(onSubmit) }>
+    <form onSubmit={ handleSubmit(onSubmit) } className="divide-y-[15px] divide-transparent max-w-60 flex flex-col">
       <div>
         <input
           type="text"
-          placeholder={(errors.fullName?.message || "Nome").toString()}
+          placeholder="Nome"
           {...register('fullName')}
         />
-        <span>{ errors.fullName?.message?.toString()}</span>
+        {errors.fullName && <span className="input-error">{ errors.fullName?.message?.toString()}</span>}
       </div>
       <div>
         <input
           type="text"
-          placeholder={(errors.email?.message || "E-mail").toString()}
+          placeholder="E-mail"
           {...register('email')}
         />
-        <span>{ errors.email?.message?.toString()}</span>
+        {errors.email && <span className="input-error">{ errors.email?.message?.toString()}</span>}
       </div>
       <div>
         <input
           type="text"
-          placeholder={(errors.cpf?.message || "CPF").toString()}
+          placeholder="CPF"
           {...register('cpf')}
           onChange={handleInputChangeMask}
           maxLength={14}
         />
-        <span>{ errors.cpf?.message?.toString()}</span>
+        {errors.cpf && <span className="input-error">{ errors.cpf?.message?.toString()}</span>}
       </div>
       <div>
         <input
           type="text"
-          placeholder={(errors.phoneNumber?.message || "Telefone").toString()}
+          placeholder="Telefone"
           {...register('phoneNumber')}
           onChange={handleInputChangeMask}
           maxLength={14}
         />
-        <span>{ errors.phoneNumber?.message?.toString()}</span>
+        {errors.phoneNumber && <span className="input-error">{ errors.phoneNumber?.message?.toString()}</span>}
       </div>
       <div>
         <select
@@ -92,7 +92,7 @@ export default function CreateCustomerForm({ customerStatuses }: {customerStatus
             setValueAs: (value) => Number(value),
           })}
         >
-          <option value="">Status</option>
+          <option value="" disabled selected hidden className='text-gray-400'>Status</option>
           {
             customerStatuses.map((customerStatus) => (
               <option
@@ -104,17 +104,31 @@ export default function CreateCustomerForm({ customerStatuses }: {customerStatus
             ))
           }
         </select>
-        <span>{ errors.statusId?.message?.toString()}</span>
+        {errors.statusId && <span className="input-error">{ errors.statusId?.message?.toString()}</span>}
       </div>
 
-      <p>{ errors.root?.message?.toString()}</p>
+      <div>
+        {
+          errors.root
+            &&
+              <span className="input-error">{ errors.root?.message?.toString()}</span>
+        }
+      </div>
 
-      <button
-        disabled={isButtonDisabled || isSubmitting}
-      >
-        Criar
-      </button>
-      <Link to="/dashboard">Voltar</Link>
+      <div className="flex w-full gap-2">
+        <button
+          className="bg-uol-btn text-white py-1.5 rounded hover:brightness-110 duration-300 flex-1 hover:cursor-pointer"
+          disabled={isButtonDisabled || isSubmitting}
+        >
+          Criar
+        </button>
+        <Link
+          className="link-empty flex-1 md:px-0"
+          to="/dashboard"
+          >
+            Voltar
+          </Link>
+      </div>
     </form>
   )
 }
