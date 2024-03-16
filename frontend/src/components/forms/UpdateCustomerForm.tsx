@@ -6,8 +6,7 @@ import ICustomer, { ICustomerForm } from '../../interfaces/ICustomer'
 import ICustomerStatus from '../../interfaces/ICustomerStatus'
 import CustomerService from '../../services/CustomerService';
 import { useEffect } from 'react';
-import cpfMask from '../../masks/cpfMask';
-import phoneNumberMask from '../../masks/phoneNumberMask';
+import { phoneNumberMask, cpfMask } from '../../masks/inputsMasks';
 import { removeSpecialCharacters } from '../../utils/formatters';
 import { toast } from 'react-toastify';
 import LoadingSpinner from '../../animations/LoadingSpinner';

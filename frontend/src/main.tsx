@@ -4,11 +4,11 @@ import {
   RouterProvider,
   redirect
 } from "react-router-dom";
-import ErrorPage from './pages/error/index.tsx';
-import DashboardPage from './pages/dashboard/';
-import CreateCustomerChildren from './pages/dashboard/createCustomerChildren';
-import ListCustomersChildren from './pages/dashboard/listCustomersChildren'
-import UpdateCustomerChildren from './pages/dashboard/updateCustomerChildren/index.tsx';
+import ErrorPage from './pages/Error';
+import DashboardPage from './pages/Dashboard/';
+import CreateCustomerChildren from './pages/Dashboard/CreateCustomerChild/';
+import ListCustomersChildren from './pages/Dashboard/ListCustomersChild/'
+import UpdateCustomerChildren from './pages/Dashboard/UpdateCustomerChild/';
 import './index.css'
 import 'react-toastify/dist/ReactToastify.css';
 

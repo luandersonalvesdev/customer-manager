@@ -1,5 +1,4 @@
-import cpfMask from "../masks/cpfMask";
-import phoneNumberMask from "../masks/phoneNumberMask";
+import { phoneNumberMask, cpfMask } from "../masks/inputsMasks";
 
 const handleInputChangeMask = (event: React.ChangeEvent<HTMLInputElement>, setValue: any, clearErrors: any) => {
   const { name, value } = event.target;
