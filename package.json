@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test:backend": "cd backend && npm run test",
+    "test:frontend": "cd frontend && npm run test",
     "test:backend:coverage": "cd backend && npm run test:coverage",
+    "test:frontend:coverage": "cd frontend && npm run test:coverage",
     "docker:up": "npm run docker:up:conditional",
     "docker:down": "npm run docker:down:conditional",
     "docker:up:conditional": "docker-compose up -d --build || docker compose up -d --build",
