@@ -14,7 +14,7 @@ import './index.css'
 const router = createBrowserRouter([
   {
     path: "/",
-    loader: () => redirect('/dashboard/list'),
+    loader: () => redirect('/dashboard'),
     errorElement: <ErrorPage />,
   },
   {
@@ -22,7 +22,7 @@ const router = createBrowserRouter([
     element: <DashboardPage />,
     children: [
       {
-        path: "/dashboard/list",
+        path: "/dashboard/",
         element: <ListCustomersChildren />
       },
       {

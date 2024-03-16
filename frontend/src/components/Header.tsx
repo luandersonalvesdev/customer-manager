@@ -1,7 +1,8 @@
 export default function Header() {
   return (
-    <header>
-      <h1>UOL</h1>
+    <header className="bg-uol-header flex justify-center py-5">
+      <img
+        className="h-7" src="../public/uol-logo-white.svg" alt="uol-logo" />
     </header>
   )
 }
