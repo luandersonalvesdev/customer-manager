@@ -8,6 +8,7 @@ import CustomerService from '../../services/CustomerService';
 import cpfMask from '../../masks/cpfMask';
 import phoneNumberMask from '../../masks/phoneNumberMask';
 import { removeSpecialCharacters } from '../../utils/formatters';
+import { toast } from 'react-toastify';
 
 export default function CreateCustomerForm({ customerStatuses }: {customerStatuses: ICustomerStatus[]}) {
   const {
@@ -41,6 +42,7 @@ export default function CreateCustomerForm({ customerStatuses }: {customerStatus
       const service = new CustomerService();
       await service.createCustomer(customerData);
       reset();
+      toast.success('Cliente criado com sucesso!');
     } catch (err: any) {
       setError('root', { type: 'custom', message: err.response.data.message });
     }

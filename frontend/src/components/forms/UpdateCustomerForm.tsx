@@ -9,6 +9,7 @@ import { useEffect } from 'react';
 import cpfMask from '../../masks/cpfMask';
 import phoneNumberMask from '../../masks/phoneNumberMask';
 import { removeSpecialCharacters } from '../../utils/formatters';
+import { toast } from 'react-toastify';
 
 export default function UpdateCustomerForm(
   { customerStatuses, customer }:
@@ -51,6 +52,7 @@ export default function UpdateCustomerForm(
       customerData.phoneNumber = removeSpecialCharacters(customerData.phoneNumber)
       const service = new CustomerService();
       await service.updateCustomer({...customerData, id: customer.id});
+      toast.success('Cliente atualizado com sucesso!');
     } catch (err: any) {
       setError('root', { type: 'custom', message: err.response.data.message });
     }

@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Header from "../../components/Header";
+import ToastContainerComp from "../../components/ToastContainerComp";
 
 export default function DashboardPage() {
   return (
@@ -17,6 +18,7 @@ export default function DashboardPage() {
         <hr className="w-full h-0.5 bg-gray-400 md:mb-10 mb-5"></hr>
         <Outlet />
       </div>
+      <ToastContainerComp />
     </main>
   )
 }

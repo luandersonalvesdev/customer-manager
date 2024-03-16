@@ -10,6 +10,7 @@ import CreateCustomerChildren from './pages/dashboard/createCustomerChildren';
 import ListCustomersChildren from './pages/dashboard/listCustomersChildren'
 import UpdateCustomerChildren from './pages/dashboard/updateCustomerChildren/index.tsx';
 import './index.css'
+import 'react-toastify/dist/ReactToastify.css';
 
 const router = createBrowserRouter([
   {
