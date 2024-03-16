@@ -5,13 +5,16 @@ import ICustomerStatus from "../../../interfaces/ICustomerStatus";
 import ICustomer from "../../../interfaces/ICustomer";
 import { useParams } from "react-router-dom";
 import CustomerService from "../../../services/CustomerService";
+import LoadingSpinner from "../../../animations/LoadingSpinner";
 
 export default function UpdateCustomer() {
   const [customerStatuses, setCustomerStatuses] = useState<ICustomerStatus[]>([]);
   const [customer, setCustomer] = useState<ICustomer>({} as ICustomer);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const { customerId } = useParams<{customerId: string}>();
 
   useEffect(() => {
+    setIsLoading(true);
     const customerStatusService = new CustomerStatusService();
 
     customerStatusService.getAllCustomerStatuses()
@@ -31,11 +34,20 @@ export default function UpdateCustomer() {
       .catch(() => {
         setCustomer({} as ICustomer)
       })
+      .finally(() => {
+        setIsLoading(false)
+      });
   }, []);
 
   return (
     <div>
-      <UpdateCustomerForm customerStatuses={customerStatuses} customer={customer} />
+      {
+        isLoading
+          ? <LoadingSpinner className="border-uol-btn size-10"/>
+          : (
+            <UpdateCustomerForm customerStatuses={customerStatuses} customer={customer} />
+          )
+      }
     </div>
   )
 }

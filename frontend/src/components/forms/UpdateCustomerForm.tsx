@@ -31,12 +31,12 @@ export default function UpdateCustomerForm(
   });
 
   useEffect(() => {
-    setValue('fullName', customer.fullName || '');
-    setValue('email', customer.email || '');
-    setValue('cpf', customer.cpf ? cpfMask(customer.cpf) : '');
-    setValue('phoneNumber', customer.phoneNumber ?  phoneNumberMask(customer.phoneNumber) : '');
-    setValue('statusId', customer.statusId || 0);
-  }, [customer]);
+    setValue('fullName', customer.fullName);
+    setValue('email', customer.email);
+    setValue('cpf', cpfMask(customer.cpf));
+    setValue('phoneNumber',phoneNumberMask(customer.phoneNumber));
+    setValue('statusId', customer.statusId);
+  }, []);
 
   const handleInputChangeMask = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
