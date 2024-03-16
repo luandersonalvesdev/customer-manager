@@ -26,7 +26,7 @@ export default function CustomerList() {
           })
         }
       </ul>
-      <p>Exibindo {customers.length} clientes.</p>
+      <p className="text-xs md:text-lg">Exibindo {customers.length} clientes</p>
     </div>
   )
 }

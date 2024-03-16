@@ -6,8 +6,12 @@ export default {
   ],
   theme: {
     extend: {
+      fontSize: {
+        'xss': '0.60rem',
+      },
       colors: {
         'uol-header': '#333333',
+        'uol-btn': '#FF8000',
       },
     },
   },
