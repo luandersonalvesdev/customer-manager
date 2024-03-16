@@ -21,3 +21,7 @@ input, select {
 .customer-card {
   @apply flex justify-between items-center border border-gray-300 mb-3 px-3 md:px-7 py-1.5 md:py-3 text-xss md:text-base;
 }
+
+.btn-form {
+  @apply bg-uol-btn text-white py-1.5 rounded hover:brightness-110 duration-300 flex-1 hover:cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed;
+}
