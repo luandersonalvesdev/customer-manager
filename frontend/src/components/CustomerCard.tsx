@@ -15,7 +15,7 @@ export default function CustomerCard({ customer }: { customer: ICustomer }) {
   };
 
   return (
-    <li className="flex justify-between items-center border border-gray-300 mb-3 px-3 md:px-7 py-1.5 md:py-3 text-xss md:text-base">
+    <li className="customer-card">
       <div className="flex-1">
         <p className="font-medium">{customer.fullName}</p>
         <p>{customer.email}</p>
@@ -29,7 +29,7 @@ export default function CustomerCard({ customer }: { customer: ICustomer }) {
         <p>{customer.status.name}</p>
       </div>
       <Link
-        className="bg-transparent border text-uol-btn border-uol-btn h-full text-center px-1 md:px-5 py-1 md:py-1.5 rounded hover:brightness-110 hover:text-white hover:bg-uol-btn duration-300"
+        className="link-empty"
         to={`/dashboard/update-customer/${customer.id}`}
       >
         Editar
