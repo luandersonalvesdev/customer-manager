@@ -3,9 +3,8 @@ import { render, screen } from '@testing-library/react';
 import CustomerListChild from '../../pages/Dashboard/CustomersListChild/CustomersListChild';
 import { BrowserRouter } from "react-router-dom";
 
-
 describe("Unit - Customers list Child", () => {
-  it("Should render the Customers list Child", () => {
+  it("Should render the customers list child", () => {
     render(
       <BrowserRouter>
         <CustomerListChild />

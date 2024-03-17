@@ -3,8 +3,8 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import UpdateCustomerError from '../../pages/Dashboard/UpdateCustomerChild/UpdateCustomerError';
 import { BrowserRouter } from 'react-router-dom';
 
-describe("Header", () => {
-  it("Render the header", () => {
+describe("Unit - Update Customer Error", () => {
+  it("Should render the update customer error", () => {
     render(
       <BrowserRouter>
         <UpdateCustomerError />

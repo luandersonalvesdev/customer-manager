@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import DashboardPage from '../../pages/Dashboard/DashboardPage';
 
 describe("Unit - Dashboard Page", () => {
-  it("Should render the Dashboard page", () => {
+  it("Should render the dashboard page", () => {
     render(<DashboardPage />);
 
     const customerLogo = screen.getByAltText('customer-logo');

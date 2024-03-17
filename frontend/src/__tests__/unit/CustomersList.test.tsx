@@ -4,9 +4,8 @@ import CustomersList from '../../components/CustomersList';
 import { BrowserRouter } from "react-router-dom";
 import { CUSTOMERS_LIST_MOCK } from "../mocks/customer.mock";
 
-
-describe("Unit - Customer Card Component", () => {
-  it("Should render the customer passed to it", () => {
+describe("Unit - Customers List Component", () => {
+  it("Should render the customers list passed to it", () => {
     render(
       <BrowserRouter>
         <CustomersList customers={CUSTOMERS_LIST_MOCK}/>

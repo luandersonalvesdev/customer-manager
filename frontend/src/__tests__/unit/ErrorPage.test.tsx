@@ -4,7 +4,7 @@ import ErrorPage from '../../pages/Error/ErrorPage';
 import { BrowserRouter } from 'react-router-dom';
 
 describe("Unit - Error Page", () => {
-  it("Render the error page", () => {
+  it("Should render the error page", () => {
     render(
       <BrowserRouter>
         <ErrorPage />

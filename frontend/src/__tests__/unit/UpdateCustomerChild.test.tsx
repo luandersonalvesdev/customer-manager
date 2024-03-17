@@ -3,9 +3,8 @@ import { render, screen } from '@testing-library/react';
 import UpdateCustomerChild from '../../pages/Dashboard/UpdateCustomerChild/UpdateCustomerChild';
 import { BrowserRouter } from "react-router-dom";
 
-
 describe("Unit - Update Customer Child", () => {
-  it("Should render the Update Customer Child", () => {
+  it("Should render the update customer child", () => {
     render(
       <BrowserRouter>
         <UpdateCustomerChild />
