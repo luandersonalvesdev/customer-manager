@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import CustomerService from "../../../services/CustomerService";
 import ICustomer from "../../../interfaces/ICustomer";
 import LoadingSpinner from "../../../animations/LoadingSpinner";
-import CustomerList from "../../../components/CustomerList";
+import CustomersList from "../../../components/CustomersList";
 
 export default function CustomerListPanel() {
   const [customers, setCustomers] = useState<ICustomer[]>([]);
@@ -29,7 +29,7 @@ export default function CustomerListPanel() {
         isLoading
           ? <LoadingSpinner className="border-uol-btn size-10 md:size-20"/>
           : (
-            <CustomerList customers={customers} />
+            <CustomersList customers={customers} />
           )
       }
       <p className="text-xs md:text-lg">Exibindo {customers.length} clientes</p>
