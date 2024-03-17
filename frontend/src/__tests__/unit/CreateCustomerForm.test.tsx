@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom';
-import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import CreateCustomerForm from '../../components/forms/CreateCustomerForm';
 import { BrowserRouter } from "react-router-dom";
 import { CUSTOMER_STATUSES_MOCK } from '../mocks/customerStatus.mock';
@@ -7,7 +7,6 @@ import {
   CUSTOMER_MOCK, VALID_FULL_NAME_MOCK, VALID_PHONE_NUMBER_MOCK, VALID_CPF_MOCK, VALID_EMAIL_MOCK, INVALID_EMAIL_MOCK
 } from '../mocks/customer.mock'
 import CustomerService from '../../services/CustomerService';
-import { useForm } from 'react-hook-form';
 
 describe("Unit - Create Customer Form", () => {
 
