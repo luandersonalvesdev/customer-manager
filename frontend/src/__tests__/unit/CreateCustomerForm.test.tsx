@@ -154,7 +154,7 @@ describe("Unit - Create Customer Form", () => {
     expect(fullNameInput).toHaveValue('');
   });
 
-  it("Should can create a customer.", async () => {
+  it("Should can not create a customer.", async () => {
     render(
       <BrowserRouter>
         <CreateCustomerForm customerStatuses={ CUSTOMER_STATUSES_MOCK } />
