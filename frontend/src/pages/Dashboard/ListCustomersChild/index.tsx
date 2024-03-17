@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import CustomerList from "./CustomerList";
 
-export default function ListCustomersChildren() {
+export default function ListCustomersChild() {
   return (
     <div>
       <div className="flex justify-between mb-5 md:mb-10 gap-2 text-xs md:text-base">

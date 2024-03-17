@@ -1,6 +1,6 @@
 import UpdateCustomer from "./UpdateCustomer";
 
-export default function UpdateCustomerChildren() {
+export default function UpdateCustomerChild() {
   return (
     <div>
       <div className="text-xs md:text-sm mb-5 md:mb-10">

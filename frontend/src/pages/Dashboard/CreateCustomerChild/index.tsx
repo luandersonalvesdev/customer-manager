@@ -1,6 +1,6 @@
 import CreateCustomer from "./CreateCustomer";
 
-export default function CreateCustomerChildren() {
+export default function CreateCustomerChild() {
   return (
     <div>
       <div className="text-xs md:text-sm mb-5 md:mb-10">

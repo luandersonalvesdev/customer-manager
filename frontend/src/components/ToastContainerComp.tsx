@@ -1,11 +1,11 @@
-import { ToastContainer } from "react-toastify";
+import { Flip, ToastContainer } from "react-toastify";
 
 export default function ToastContainerComp() {
   return (
     <ToastContainer
-        position="bottom-center"
+        position="top-right"
         autoClose={3000}
-        hideProgressBar={false}
+        hideProgressBar={true}
         newestOnTop={false}
         closeOnClick
         rtl={false}
@@ -13,7 +13,7 @@ export default function ToastContainerComp() {
         draggable
         pauseOnHover
         theme="light"
-        transition: Flip
+        transition={Flip}
       />
   )
 }

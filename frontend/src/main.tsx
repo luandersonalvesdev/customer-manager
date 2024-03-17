@@ -6,9 +6,9 @@ import {
 } from "react-router-dom";
 import ErrorPage from './pages/Error';
 import DashboardPage from './pages/Dashboard/';
-import CreateCustomerChildren from './pages/Dashboard/CreateCustomerChild/';
-import ListCustomersChildren from './pages/Dashboard/ListCustomersChild/'
-import UpdateCustomerChildren from './pages/Dashboard/UpdateCustomerChild/';
+import CreateCustomerChild from './pages/Dashboard/CreateCustomerChild/';
+import ListCustomersChild from './pages/Dashboard/ListCustomersChild/'
+import UpdateCustomerChild from './pages/Dashboard/UpdateCustomerChild/';
 import './index.css'
 import 'react-toastify/dist/ReactToastify.css';
 import UpdateCustomerError from './pages/Dashboard/UpdateCustomerChild/UpdateCustomerError';
@@ -25,15 +25,15 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/dashboard/",
-        element: <ListCustomersChildren />
+        element: <ListCustomersChild />
       },
       {
         path: "/dashboard/create-customer",
-        element: <CreateCustomerChildren />
+        element: <CreateCustomerChild />
       },
       {
         path: "/dashboard/update-customer/:customerId",
-        element: <UpdateCustomerChildren />,
+        element: <UpdateCustomerChild />,
         errorElement: <UpdateCustomerError />
       },
     ]
