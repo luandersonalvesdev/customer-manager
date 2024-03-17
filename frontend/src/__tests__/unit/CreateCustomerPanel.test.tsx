@@ -11,7 +11,7 @@ describe("Unit - Create Customer Panel", () => {
     jest.clearAllMocks();
   })
 
-  it.only("Should make fetch of customer statuses", async () => {
+  it("Should make fetch of customer statuses", async () => {
     const getAllStatusesMock = jest.spyOn(CustomerStatusService.prototype, 'getAllCustomerStatuses').mockResolvedValue(CUSTOMER_STATUSES_MOCK);
     render(
       <BrowserRouter>
@@ -25,7 +25,7 @@ describe("Unit - Create Customer Panel", () => {
     });
   });
 
-  it.only("Should could not make fetch of customer statuses", async () => {
+  it("Should could not make fetch of customer statuses", async () => {
     const setIsLoading = jest.fn();
     try {
       jest.spyOn(CustomerStatusService.prototype, 'getAllCustomerStatuses').mockRejectedValue({});
