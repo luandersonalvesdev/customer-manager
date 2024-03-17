@@ -1,8 +1,8 @@
-const VALID_FULL_NAME_MOCK = 'Jorel';
-const VALID_EMAIL_MOCK = 'jorel@email.com';
-const VALID_CPF_MOCK = '11111111111';
-const VALID_PHONE_NUMBER_MOCK = '11111111111';
-const STATUS_MOCK = { id: 1, name: 'Ativo' }
+export const VALID_FULL_NAME_MOCK = 'Jorel';
+export const VALID_EMAIL_MOCK = 'jorel@email.com';
+export const VALID_CPF_MOCK = '11111111111';
+export const VALID_PHONE_NUMBER_MOCK = '11111111111';
+export const STATUS_MOCK = { id: 1, name: 'Ativo' }
 
 const VALID_FULL_NAME_2_MOCK = 'Lara';
 const VALID_EMAIL_2_MOCK = 'lara@email.com';
