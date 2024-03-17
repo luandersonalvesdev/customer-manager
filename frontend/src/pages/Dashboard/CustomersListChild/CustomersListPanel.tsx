@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import CustomerService from "../../../services/CustomerService";
 import ICustomer from "../../../interfaces/ICustomer";
-import CustomerCard from "../../../components/CustomerCard";
 import LoadingSpinner from "../../../animations/LoadingSpinner";
+import CustomerList from "../../../components/CustomerList";
 
-export default function CustomerList() {
+export default function CustomerListPanel() {
   const [customers, setCustomers] = useState<ICustomer[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
@@ -27,15 +27,9 @@ export default function CustomerList() {
     <div>
       {
         isLoading
-          ? <LoadingSpinner className="border-uol-btn size-10"/>
+          ? <LoadingSpinner className="border-uol-btn size-10 md:size-20"/>
           : (
-            <ul>
-              {
-                customers.map((customer) => {
-                  return <CustomerCard customer={customer} key={customer.id} />
-                })
-              }
-            </ul>
+            <CustomerList customers={customers} />
           )
       }
       <p className="text-xs md:text-lg">Exibindo {customers.length} clientes</p>

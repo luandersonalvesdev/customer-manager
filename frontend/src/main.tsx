@@ -7,7 +7,7 @@ import {
 import ErrorPage from './pages/Error';
 import DashboardPage from './pages/Dashboard/DashboardPage';
 import CreateCustomerChild from './pages/Dashboard/CreateCustomerChild/CreateCustomerChild';
-import ListCustomersChild from './pages/Dashboard/ListCustomersChild/ListCustomersChild'
+import CustomerListChild from './pages/Dashboard/CustomersListChild/CustomersListChild'
 import UpdateCustomerChild from './pages/Dashboard/UpdateCustomerChild/UpdateCustomerChild';
 import './index.css'
 import 'react-toastify/dist/ReactToastify.css';
@@ -25,7 +25,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/dashboard/",
-        element: <ListCustomersChild />
+        element: <CustomerListChild />
       },
       {
         path: "/dashboard/create-customer",

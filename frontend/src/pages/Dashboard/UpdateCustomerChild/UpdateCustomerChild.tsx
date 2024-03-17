@@ -1,4 +1,4 @@
-import UpdateCustomer from "./UpdateCustomer";
+import UpdateCustomerPanel from "./UpdateCustomerPanel";
 
 export default function UpdateCustomerChild() {
   return (
@@ -7,7 +7,7 @@ export default function UpdateCustomerChild() {
         <p className="text-base md:text-xl font-medium">Atualize o usuário</p>
         <p>Informe os campos a seguir para atualizar o usuário:</p>
       </div>
-      <UpdateCustomer />
+      <UpdateCustomerPanel />
     </div>
   )
 }

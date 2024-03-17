@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import CustomerList from "./CustomerList";
+import CustomerListPanel from "./CustomersListPanel";
 
-export default function ListCustomersChild() {
+export default function CustomerListChild() {
   return (
     <div>
       <div className="flex justify-between mb-5 md:mb-10 gap-2 text-xs md:text-base">
@@ -16,7 +16,7 @@ export default function ListCustomersChild() {
           Novo cliente
         </Link>
       </div>
-      <CustomerList />
+      <CustomerListPanel />
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import CreateCustomer from "./CreateCustomer";
+import CreateCustomerPanel from "./CreateCustomerPanel";
 
 export default function CreateCustomerChild() {
   return (
@@ -7,7 +7,7 @@ export default function CreateCustomerChild() {
         <p className="text-base md:text-xl font-medium">Novo usuário</p>
         <p>Informe os campos a seguir para criar novo usuário:</p>
       </div>
-      <CreateCustomer />
+      <CreateCustomerPanel />
     </div>
   )
 }

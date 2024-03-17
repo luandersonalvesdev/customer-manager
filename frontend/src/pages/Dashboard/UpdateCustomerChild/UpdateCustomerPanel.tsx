@@ -43,7 +43,7 @@ export default function UpdateCustomer() {
     <div>
       {
         isLoading
-          ? <LoadingSpinner className="border-uol-btn size-10"/>
+          ? <LoadingSpinner className="border-uol-btn size-10 md:size-20"/>
           : (
             <UpdateCustomerForm customerStatuses={customerStatuses} customer={customer} />
           )
