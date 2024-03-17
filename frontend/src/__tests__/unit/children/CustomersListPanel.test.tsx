@@ -1,9 +1,9 @@
 import '@testing-library/jest-dom';
 import { render, waitFor } from '@testing-library/react';
-import CustomerListPanel from '../../pages/Dashboard/CustomersListChild/CustomersListPanel';
+import CustomerListPanel from '../../../pages/Dashboard/CustomersListChild/CustomersListPanel';
 import { BrowserRouter } from "react-router-dom";
-import CustomerService from '../../services/CustomerService';
-import { CUSTOMERS_LIST_MOCK } from '../mocks/customer.mock';
+import CustomerService from '../../../services/CustomerService';
+import { CUSTOMERS_LIST_MOCK } from '../../mocks/customer.mock';
 
 describe("Unit - Customers List Panel", () => {
 

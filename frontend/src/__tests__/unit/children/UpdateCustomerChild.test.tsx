@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import UpdateCustomerChild from '../../pages/Dashboard/UpdateCustomerChild/UpdateCustomerChild';
+import UpdateCustomerChild from '../../../pages/Dashboard/UpdateCustomerChild/UpdateCustomerChild';
 import { BrowserRouter } from "react-router-dom";
 
 describe("Unit - Update Customer Child", () => {

@@ -1,8 +1,8 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import CustomerCard from '../../components/CustomerCard';
+import CustomerCard from '../../../components/CustomerCard';
 import { BrowserRouter } from "react-router-dom";
-import { CUSTOMER_MOCK, CUSTOMERS_WITHOUT_STATUS_MOCK } from "../mocks/customer.mock";
+import { CUSTOMER_MOCK, CUSTOMERS_WITHOUT_STATUS_MOCK } from "../../mocks/customer.mock";
 
 describe("Unit - Customer Card Component", () => {
   it("Should render the customer passed to it", () => {

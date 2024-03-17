@@ -1,10 +1,10 @@
 import '@testing-library/jest-dom';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import UpdateCustomerForm from '../../components/forms/UpdateCustomerForm';
+import UpdateCustomerForm from '../../../components/forms/UpdateCustomerForm';
 import { BrowserRouter } from "react-router-dom";
-import { CUSTOMER_STATUSES_MOCK } from '../mocks/customerStatus.mock';
-import { CUSTOMER_MOCK, VALID_PHONE_NUMBER_MOCK, VALID_CPF_MOCK, INVALID_EMAIL_MOCK } from '../mocks/customer.mock'
-import CustomerService from '../../services/CustomerService';
+import { CUSTOMER_STATUSES_MOCK } from '../../mocks/customerStatus.mock';
+import { CUSTOMER_MOCK, VALID_PHONE_NUMBER_MOCK, VALID_CPF_MOCK, INVALID_EMAIL_MOCK } from '../../mocks/customer.mock'
+import CustomerService from '../../../services/CustomerService';
 
 describe("Unit - Update Customer Form", () => {
 

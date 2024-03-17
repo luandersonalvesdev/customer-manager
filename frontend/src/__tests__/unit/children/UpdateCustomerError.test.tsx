@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, screen, fireEvent } from '@testing-library/react';
-import UpdateCustomerError from '../../pages/Dashboard/UpdateCustomerChild/UpdateCustomerError';
+import UpdateCustomerError from '../../../pages/Dashboard/UpdateCustomerChild/UpdateCustomerError';
 import { BrowserRouter } from 'react-router-dom';
 
 describe("Unit - Update Customer Error", () => {

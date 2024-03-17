@@ -1,9 +1,9 @@
 import '@testing-library/jest-dom';
 import { render, waitFor } from '@testing-library/react';
-import CreateCustomerPanel from '../../pages/Dashboard/CreateCustomerChild/CreateCustomerPanel';
+import CreateCustomerPanel from '../../../pages/Dashboard/CreateCustomerChild/CreateCustomerPanel';
 import { BrowserRouter } from "react-router-dom";
-import { CUSTOMER_STATUSES_MOCK } from '../mocks/customerStatus.mock';
-import CustomerStatusService from '../../services/CustomerStatusService';
+import { CUSTOMER_STATUSES_MOCK } from '../../mocks/customerStatus.mock';
+import CustomerStatusService from '../../../services/CustomerStatusService';
 
 describe("Unit - Create Customer Panel", () => {
 

@@ -1,11 +1,11 @@
 import '@testing-library/jest-dom';
 import { render, waitFor } from '@testing-library/react';
-import UpdateCustomerPanel from '../../pages/Dashboard/UpdateCustomerChild/UpdateCustomerPanel'
+import UpdateCustomerPanel from '../../../pages/Dashboard/UpdateCustomerChild/UpdateCustomerPanel'
 import { BrowserRouter } from "react-router-dom";
-import { CUSTOMER_STATUSES_MOCK } from '../mocks/customerStatus.mock';
-import CustomerStatusService from '../../services/CustomerStatusService';
-import CustomerService from '../../services/CustomerService';
-import { CUSTOMER_MOCK } from '../mocks/customer.mock';
+import { CUSTOMER_STATUSES_MOCK } from '../../mocks/customerStatus.mock';
+import CustomerStatusService from '../../../services/CustomerStatusService';
+import CustomerService from '../../../services/CustomerService';
+import { CUSTOMER_MOCK } from '../../mocks/customer.mock';
 
 describe("Unit - Update Customer Panel", () => {
 

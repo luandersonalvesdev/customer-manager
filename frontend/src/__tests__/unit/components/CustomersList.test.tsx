@@ -1,8 +1,8 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import CustomersList from '../../components/CustomersList';
+import CustomersList from '../../../components/CustomersList';
 import { BrowserRouter } from "react-router-dom";
-import { CUSTOMERS_LIST_MOCK } from "../mocks/customer.mock";
+import { CUSTOMERS_LIST_MOCK } from "../../mocks/customer.mock";
 
 describe("Unit - Customers List Component", () => {
   it("Should render the customers list passed to it", () => {

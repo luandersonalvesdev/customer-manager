@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, screen, fireEvent } from '@testing-library/react';
-import ErrorPage from '../../pages/Error/ErrorPage';
+import ErrorPage from '../../../pages/Error/ErrorPage';
 import { BrowserRouter } from 'react-router-dom';
 
 describe("Unit - Error Page", () => {

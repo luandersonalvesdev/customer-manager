@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import CreateCustomerChild from '../../pages/Dashboard/CreateCustomerChild/CreateCustomerChild';
+import CreateCustomerChild from '../../../pages/Dashboard/CreateCustomerChild/CreateCustomerChild';
 import { BrowserRouter } from "react-router-dom";
 
 describe("Unit - Create Customer Child", () => {

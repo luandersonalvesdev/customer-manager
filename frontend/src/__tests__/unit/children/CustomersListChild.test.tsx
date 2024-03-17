@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import CustomerListChild from '../../pages/Dashboard/CustomersListChild/CustomersListChild';
+import CustomerListChild from '../../../pages/Dashboard/CustomersListChild/CustomersListChild';
 import { BrowserRouter } from "react-router-dom";
 
 describe("Unit - Customers list Child", () => {
