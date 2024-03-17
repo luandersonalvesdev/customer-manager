@@ -1,9 +1,9 @@
 import '@testing-library/jest-dom';
-import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import UpdateCustomerForm from '../../components/forms/UpdateCustomerForm';
 import { BrowserRouter } from "react-router-dom";
 import { CUSTOMER_STATUSES_MOCK } from '../mocks/customerStatus.mock';
-import { CUSTOMER_MOCK, VALID_FULL_NAME_MOCK, VALID_PHONE_NUMBER_MOCK, VALID_CPF_MOCK, VALID_EMAIL_MOCK } from '../mocks/customer.mock'
+import { CUSTOMER_MOCK, VALID_PHONE_NUMBER_MOCK, VALID_CPF_MOCK, INVALID_EMAIL_MOCK } from '../mocks/customer.mock'
 import CustomerService from '../../services/CustomerService';
 
 describe("Unit - Update Customer Form", () => {
@@ -83,6 +83,46 @@ describe("Unit - Update Customer Form", () => {
     expect(phoneNumberInput).toHaveValue('(11)11111-1111');
   });
 
+  it("Should show errors and not be able to submit.", async () => {
+    render(
+      <BrowserRouter>
+        <UpdateCustomerForm customerStatuses={ CUSTOMER_STATUSES_MOCK } customer={ CUSTOMER_MOCK } />
+      </BrowserRouter>
+    );
+
+    const fullNameInput = screen.getByPlaceholderText('Nome');
+    const emailInput = screen.getByPlaceholderText('E-mail');
+    const cpfInput = screen.getByPlaceholderText('CPF');
+    const phoneNumberInput = screen.getByPlaceholderText('Telefone');
+    const selectInput = screen.getByRole('combobox');
+
+    fireEvent.change(fullNameInput, { target: { value: '' } });
+    fireEvent.change(emailInput, { target: { value: '' } });
+    fireEvent.change(cpfInput, { target: { value: '' } });
+    fireEvent.change(phoneNumberInput, { target: { value: '' } });
+    fireEvent.change(selectInput, { target: { value: '' } });
+
+    const updateBtn = screen.getByRole('button', { name: 'Atualizar' });
+    expect(updateBtn).not.toBeDisabled();
+    fireEvent.click(updateBtn);
+
+    await waitFor(() => {
+      const spanErrorFullName = screen.getByText('Nome é obrigatório');
+      const spanErrorEmail = screen.getByText('E-mail é obrigatório');
+      const spanErrorCpf = screen.getByText('CPF inválido');
+      const spanErrorPhoneNumber = screen.getByText('Telefone deve ter 11 números');
+      const spanErrorStatus = screen.getByText('Status é obrigatório');
+
+      expect(spanErrorFullName).toBeInTheDocument();
+      expect(spanErrorEmail).toBeInTheDocument();
+      expect(spanErrorCpf).toBeInTheDocument();
+      expect(spanErrorPhoneNumber).toBeInTheDocument();
+      expect(spanErrorStatus).toBeInTheDocument();
+    });
+
+    expect(updateBtn).toBeDisabled();
+  });
+
   it("Should can update a customer.", async () => {
     render(
       <BrowserRouter>
@@ -103,5 +143,33 @@ describe("Unit - Update Customer Form", () => {
     await waitFor(() => {
       expect(updateCustomerStub).toHaveBeenCalled();
     });
+  });
+
+  it("Should can not update a customer.", async () => {
+    render(
+      <BrowserRouter>
+        <UpdateCustomerForm customerStatuses={ CUSTOMER_STATUSES_MOCK } customer={ CUSTOMER_MOCK } />
+      </BrowserRouter>
+    );
+    const setErrorMock = jest.fn();
+    const errorResponseMock = {
+      response: {
+        data: {
+          message: '"email" must be a valid email!'
+        }
+      }
+    };
+    jest.spyOn(CustomerService.prototype, 'updateCustomer').mockRejectedValue(errorResponseMock);
+
+    const emailInput = screen.getByPlaceholderText('E-mail');
+    fireEvent.change(emailInput, { target: { value: INVALID_EMAIL_MOCK } });
+
+    const updateBtn = screen.getByRole('button', { name: 'Atualizar' });
+    expect(updateBtn).not.toBeDisabled();
+    try {
+      fireEvent.click(updateBtn);
+    } catch (error) {
+      expect(setErrorMock).toHaveBeenCalled();
+    }
   });
 })

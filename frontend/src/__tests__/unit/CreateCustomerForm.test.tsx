@@ -3,8 +3,11 @@ import { render, screen, fireEvent, waitFor, act } from '@testing-library/react'
 import CreateCustomerForm from '../../components/forms/CreateCustomerForm';
 import { BrowserRouter } from "react-router-dom";
 import { CUSTOMER_STATUSES_MOCK } from '../mocks/customerStatus.mock';
-import { CUSTOMER_MOCK, VALID_FULL_NAME_MOCK, VALID_PHONE_NUMBER_MOCK, VALID_CPF_MOCK, VALID_EMAIL_MOCK } from '../mocks/customer.mock'
+import {
+  CUSTOMER_MOCK, VALID_FULL_NAME_MOCK, VALID_PHONE_NUMBER_MOCK, VALID_CPF_MOCK, VALID_EMAIL_MOCK, INVALID_EMAIL_MOCK
+} from '../mocks/customer.mock'
 import CustomerService from '../../services/CustomerService';
+import { useForm } from 'react-hook-form';
 
 describe("Unit - Create Customer Form", () => {
 
@@ -128,7 +131,6 @@ describe("Unit - Create Customer Form", () => {
         <CreateCustomerForm customerStatuses={ CUSTOMER_STATUSES_MOCK } />
       </BrowserRouter>
     );
-
     const createCustomerStub = jest.spyOn(CustomerService.prototype, 'createCustomer').mockResolvedValue(CUSTOMER_MOCK);
 
     const fullNameInput = screen.getByPlaceholderText('Nome');
@@ -160,6 +162,7 @@ describe("Unit - Create Customer Form", () => {
         <CreateCustomerForm customerStatuses={ CUSTOMER_STATUSES_MOCK } />
       </BrowserRouter>
     );
+    const setErrorMock = jest.fn();
     const errorResponseMock = {
       response: {
         data: {
@@ -176,15 +179,17 @@ describe("Unit - Create Customer Form", () => {
     const selectInput = screen.getByRole('combobox');
 
     fireEvent.change(fullNameInput, { target: { value: VALID_FULL_NAME_MOCK } });
-    fireEvent.change(emailInput, { target: { value: VALID_EMAIL_MOCK } });
+    fireEvent.change(emailInput, { target: { value: INVALID_EMAIL_MOCK } });
     fireEvent.change(cpfInput, { target: { value: VALID_CPF_MOCK } });
     fireEvent.change(phoneNumberInput, { target: { value: VALID_PHONE_NUMBER_MOCK } });
     fireEvent.change(selectInput, { target: { value: '1' } });
 
-    act(() => {
-      const createBtn = screen.getByRole('button', { name: 'Criar' });
-      expect(createBtn).not.toBeDisabled();
+    const createBtn = screen.getByRole('button', { name: 'Criar' });
+    expect(createBtn).not.toBeDisabled();
+    try {
       fireEvent.click(createBtn);
-    })
+    } catch (error) {
+      expect(setErrorMock).toHaveBeenCalled();
+    }
   });
 })

@@ -1,5 +1,6 @@
 export const VALID_FULL_NAME_MOCK = 'Jorel';
 export const VALID_EMAIL_MOCK = 'jorel@email.com';
+export const INVALID_EMAIL_MOCK = 'jorel@email.www';
 export const VALID_CPF_MOCK = '11111111111';
 export const VALID_PHONE_NUMBER_MOCK = '11111111111';
 export const STATUS_MOCK = { id: 1, name: 'Ativo' }
