@@ -6,7 +6,7 @@ export default function ErrorPage() {
       <h1>Oops!</h1>
       <p>
         {'It looks like you got lost but don\'t worry, get back to the route by '}
-        <Link to="/">
+        <Link to="/dashboard">
           clicking here
         </Link>
       </p>

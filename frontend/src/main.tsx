@@ -4,14 +4,14 @@ import {
   RouterProvider,
   redirect
 } from "react-router-dom";
-import ErrorPage from './pages/Error';
+import ErrorPage from './pages/Error/ErrorPage';
 import DashboardPage from './pages/Dashboard/DashboardPage';
 import CreateCustomerChild from './pages/Dashboard/CreateCustomerChild/CreateCustomerChild';
 import CustomerListChild from './pages/Dashboard/CustomersListChild/CustomersListChild'
 import UpdateCustomerChild from './pages/Dashboard/UpdateCustomerChild/UpdateCustomerChild';
+import UpdateCustomerError from './pages/Dashboard/UpdateCustomerChild/UpdateCustomerError';
 import './index.css'
 import 'react-toastify/dist/ReactToastify.css';
-import UpdateCustomerError from './pages/Dashboard/UpdateCustomerChild/UpdateCustomerError';
 
 const router = createBrowserRouter([
   {
