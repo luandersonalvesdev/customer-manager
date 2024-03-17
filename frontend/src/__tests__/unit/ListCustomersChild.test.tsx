@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import ListCustomersChild from '../../pages/Dashboard/ListCustomersChild';
+import ListCustomersChild from '../../pages/Dashboard/ListCustomersChild/ListCustomersChild';
 import { BrowserRouter } from "react-router-dom";
 
 

@@ -5,10 +5,10 @@ import {
   redirect
 } from "react-router-dom";
 import ErrorPage from './pages/Error';
-import DashboardPage from './pages/Dashboard/';
-import CreateCustomerChild from './pages/Dashboard/CreateCustomerChild/';
-import ListCustomersChild from './pages/Dashboard/ListCustomersChild/'
-import UpdateCustomerChild from './pages/Dashboard/UpdateCustomerChild/';
+import DashboardPage from './pages/Dashboard/DashboardPage';
+import CreateCustomerChild from './pages/Dashboard/CreateCustomerChild/CreateCustomerChild';
+import ListCustomersChild from './pages/Dashboard/ListCustomersChild/ListCustomersChild'
+import UpdateCustomerChild from './pages/Dashboard/UpdateCustomerChild/UpdateCustomerChild';
 import './index.css'
 import 'react-toastify/dist/ReactToastify.css';
 import UpdateCustomerError from './pages/Dashboard/UpdateCustomerChild/UpdateCustomerError';

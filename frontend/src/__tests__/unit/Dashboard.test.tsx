@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import DashboardPage from '../../pages/Dashboard';
+import DashboardPage from '../../pages/Dashboard/DashboardPage';
 
 describe("Unit - Dashboard Page", () => {
   it("Should render the Dashboard page", () => {
