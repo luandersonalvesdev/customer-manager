@@ -98,7 +98,6 @@ export default function UpdateCustomerForm(
             setValueAs: (value) => Number(value),
           })}
         >
-          <option value="">Status</option>
           {
             customerStatuses.map((customerStatus) => (
               <option
