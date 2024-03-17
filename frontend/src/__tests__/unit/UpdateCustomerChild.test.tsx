@@ -4,7 +4,7 @@ import UpdateCustomerChild from '../../pages/Dashboard/UpdateCustomerChild/Updat
 import { BrowserRouter } from "react-router-dom";
 
 
-describe.only("Unit - Update Customer Child", () => {
+describe("Unit - Update Customer Child", () => {
   it("Should render the Update Customer Child", () => {
     render(
       <BrowserRouter>
