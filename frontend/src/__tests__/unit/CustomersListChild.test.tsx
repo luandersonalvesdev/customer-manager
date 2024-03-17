@@ -1,14 +1,14 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import ListCustomersChild from '../../pages/Dashboard/ListCustomersChild/ListCustomersChild';
+import CustomerListChild from '../../pages/Dashboard/CustomersListChild/CustomersListChild';
 import { BrowserRouter } from "react-router-dom";
 
 
-describe("Unit - List Customer Child", () => {
-  it("Should render the List customer Child", () => {
+describe("Unit - Customers list Child", () => {
+  it("Should render the Customers list Child", () => {
     render(
       <BrowserRouter>
-        <ListCustomersChild />
+        <CustomerListChild />
       </BrowserRouter>
     );
 
