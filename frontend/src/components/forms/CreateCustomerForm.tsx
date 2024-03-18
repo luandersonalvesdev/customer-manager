@@ -47,6 +47,7 @@ export default function CreateCustomerForm({ customerStatuses }: {customerStatus
         <input
           type="text"
           placeholder="Nome"
+          className={errors.fullName ? 'border border-red-300 rounded-t' : 'rounded'}
           {...register('fullName')}
         />
         {errors.fullName && <span className="input-error">{ errors.fullName?.message?.toString()}</span>}
@@ -55,6 +56,7 @@ export default function CreateCustomerForm({ customerStatuses }: {customerStatus
         <input
           type="text"
           placeholder="E-mail"
+          className={errors.email ? 'border border-red-300 rounded-t' : 'rounded'}
           {...register('email')}
         />
         {errors.email && <span className="input-error">{ errors.email?.message?.toString()}</span>}
@@ -63,6 +65,7 @@ export default function CreateCustomerForm({ customerStatuses }: {customerStatus
         <input
           type="text"
           placeholder="CPF"
+          className={errors.cpf ? 'border border-red-300 rounded-t' : 'rounded'}
           {...register('cpf')}
           onChange={(e) => handleInputChangeMask(e, setValue, clearErrors)}
           maxLength={14}
@@ -73,6 +76,7 @@ export default function CreateCustomerForm({ customerStatuses }: {customerStatus
         <input
           type="text"
           placeholder="Telefone"
+          className={errors.phoneNumber ? 'border border-red-300 rounded-t' : 'rounded'}
           {...register('phoneNumber')}
           onChange={(e) => handleInputChangeMask(e, setValue, clearErrors)}
           maxLength={14}
@@ -81,6 +85,7 @@ export default function CreateCustomerForm({ customerStatuses }: {customerStatus
       </section>
       <section>
         <select
+          className={errors.statusId ? 'border border-red-300 rounded-t' : 'rounded'}
           {...register('statusId', {
             setValueAs: (value) => Number(value),
           })}
@@ -104,7 +109,7 @@ export default function CreateCustomerForm({ customerStatuses }: {customerStatus
         {
           errors.root
             &&
-              <span className="input-error">{ errors.root?.message?.toString()}</span>
+              <span className="input-error-root">{ errors.root?.message?.toString()}</span>
         }
       </section>
 

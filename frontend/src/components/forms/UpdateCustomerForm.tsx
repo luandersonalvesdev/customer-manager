@@ -57,6 +57,7 @@ export default function UpdateCustomerForm(
       <section>
         <input
           type="text"
+          className={errors.fullName ? 'border border-red-300 rounded-t' : 'rounded'}
           placeholder={(errors.fullName?.message || "Nome").toString()}
           {...register('fullName')}
         />
@@ -65,6 +66,7 @@ export default function UpdateCustomerForm(
       <section>
         <input
           type="text"
+          className={errors.email ? 'border border-red-300 rounded-t' : 'rounded'}
           placeholder={(errors.email?.message || "E-mail").toString()}
           {...register('email')}
         />
@@ -74,6 +76,7 @@ export default function UpdateCustomerForm(
         <input
           type="text"
           placeholder={(errors.cpf?.message || "CPF").toString()}
+          className={errors.cpf ? 'border border-red-300 rounded-t' : 'rounded'}
           {...register('cpf')}
           onChange={(e) => handleInputChangeMask(e, setValue, clearErrors)}
           maxLength={14}
@@ -85,6 +88,7 @@ export default function UpdateCustomerForm(
         <input
           type="text"
           placeholder={(errors.phoneNumber?.message || "Telefone").toString()}
+          className={errors.phoneNumber ? 'border border-red-300 rounded-t' : 'rounded'}
           {...register('phoneNumber')}
           onChange={(e) => handleInputChangeMask(e, setValue, clearErrors)}
           maxLength={14}
@@ -94,6 +98,7 @@ export default function UpdateCustomerForm(
       </section>
       <section>
         <select
+          className={errors.statusId ? 'border border-red-300 rounded-t' : 'rounded'}
           {...register('statusId', {
             setValueAs: (value) => Number(value),
           })}
@@ -112,9 +117,14 @@ export default function UpdateCustomerForm(
         {errors.statusId && <span className="input-error">{ errors.statusId?.message?.toString()}</span>}
       </section>
 
-      <section>
-        {errors.root && <span className="input-error">{ errors.root?.message?.toString()}</span>}
-      </section>
+      {
+        errors.root
+          && (
+            <section>
+              <span className="input-error">{ errors.root?.message?.toString()}</span>
+            </section>
+          )
+      }
 
       <section className="flex w-full gap-2">
         <button
