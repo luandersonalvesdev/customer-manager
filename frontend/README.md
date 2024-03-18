@@ -31,7 +31,7 @@ Se você seguiu todos os passos descritos no [`README.md`](https://github.com/lu
 
 ## Tests
 
-Os testes unitários do `frontend` foram feitos pelo `Jest` com auxílio do `Babel`.
+Os testes unitários do `frontend` foram feitos pelo `Jest` e `React Testing Library` com auxílio do `Babel`.
 
 ### Executar
 
