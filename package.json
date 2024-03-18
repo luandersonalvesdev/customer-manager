@@ -8,6 +8,8 @@
     "test:frontend": "cd frontend && npm run test",
     "test:backend:coverage": "cd backend && npm run test:coverage",
     "test:frontend:coverage": "cd frontend && npm run test:coverage",
+    "install:all": "npm --prefix frontend install && npm --prefix backend install",
+    "setup:env": "mv frontend/.env.example frontend/.env && mv backend/.env.example backend/.env",
     "docker:up": "npm run docker:up:conditional",
     "docker:down": "npm run docker:down:conditional",
     "docker:up:conditional": "docker-compose up -d --build || docker compose up -d --build",
