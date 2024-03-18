@@ -22,10 +22,9 @@ Se você seguiu todos os passos descritos no [`README.md`](https://github.com/lu
 
 ## Estrutura do banco de dados
 
-O banco de dados utilizada foi o [Postgres](https://www.postgresql.org/) pela sua rapidez, versatilidade e facilidade de utilização. A estrutura escolhida foi a seguinte.
+O banco de dados utilizado foi o [Postgres](https://www.postgresql.org/) pela sua rapidez, versatilidade e facilidade de utilização. A estrutura escolhida foi a seguinte.
 
 ![db-structure](/assets/preview-db.png)
-
 
 ## Documentação da API
 
@@ -37,7 +36,7 @@ O banco de dados utilizada foi o [Postgres](https://www.postgresql.org/) pela su
 /customer
 ```
 
-| Parametro   | Tipo       | Descrição                           |
+| Parâmetro   | Tipo       | Descrição                           |
 | :---------- | :--------- | :---------------------------------- |
 | `fullName` | `string` | Obrigatório |
 | `email` | `string` | Obrigatório |
@@ -46,8 +45,6 @@ O banco de dados utilizada foi o [Postgres](https://www.postgresql.org/) pela su
 | `statusId` | `number` | Obrigatório |
 
 <details> <summary> Retorno esperado </summary> 
-
-* status code `201`
 
 ```bash
 {
@@ -61,6 +58,7 @@ O banco de dados utilizada foi o [Postgres](https://www.postgresql.org/) pela su
   "createdAt": "2024-03-18T00:42:34.179Z"
 }
 ```
+> status code: `200`
 </details>
 
 ___
@@ -73,7 +71,7 @@ ___
 /customer
 ```
 
-| Parametro   | Tipo       | Descrição                           |
+| Parâmetro   | Tipo       | Descrição                           |
 | :---------- | :--------- | :---------------------------------- |
 | `id` | `number` | Obrigatório |
 | `fullName` | `string` | Obrigatório |
@@ -84,7 +82,6 @@ ___
 
 <details> <summary> Retorno esperado </summary> 
 
-* status code `200`
 
 ```bash
 {
@@ -96,6 +93,7 @@ ___
   "statusId": 2
 }
 ```
+> status code: `200`
 </details>
 
 ___
@@ -109,14 +107,12 @@ ___
 /customer
 ```
 
-| Query parametros   | Tipo       | Descrição                           |
+| Query Parâmetros   | Tipo       | Descrição                           |
 | :---------- | :--------- | :---------------------------------- |
 | `limit` | `string` | `10` valor padrão |
 | `offset` | `string` | `0` valor padrão |
 
 <details> <summary> Retorno esperado </summary> 
-
-* status code `200`
 
 ```bash
 [
@@ -148,7 +144,75 @@ ___
   },
 ]
 ```
+> status code: `200`
+</details>
 
+___
+
+
+### Buscar cliente por `id`
+
+![#f03c15](https://placehold.co/15x15/61AFFE/61AFFE.png) &nbsp;**GET**
+
+```
+/customer/:id
+```
+
+<details> <summary> Retorno esperado </summary> 
+
+
+```bash
+{
+  "id": 1,
+  "fullName": "Jorel",
+  "email": "jorel@email.com",
+  "cpf": "11111111111",
+  "phoneNumber": "11111111111",
+  "status": {
+    "name": "Ativo",
+    "id": 1
+  },
+  "createdAt": "2024-03-18T00:01:12.968Z",
+  "updatedAt": "2024-03-18T00:01:12.968Z"
+}
+```
+> status code: `200`
+</details>
+
+___
+
+
+### Buscar todos os status
+
+![#f03c15](https://placehold.co/15x15/61AFFE/61AFFE.png) &nbsp;**GET**
+
+```
+/status
+```
+
+<details> <summary> Retorno esperado </summary> 
+
+```bash
+[
+  {
+    "id": 1,
+    "name": "Ativo"
+  },
+  {
+    "id": 2,
+    "name": "Inativo"
+  },
+  {
+    "id": 3,
+    "name": "Aguardando ativação"
+  },
+  {
+    "id": 4,
+    "name": "Desativado"
+  }
+]
+```
+> status code: `200`
 </details>
 
 ## Testes
