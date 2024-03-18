@@ -238,8 +238,6 @@ ___
 
 </details>
 
-___
-
 
 ## Testes
 
@@ -332,6 +330,25 @@ React permite a criação de interfaces declarativas e promove a modularidade do
 
 
 </details>
+
+## Demonstração de uso 📽️
+
+<details> <summary>Ver mais</summary>
+
+<br>
+
+<details> <summary>PC</summary>
+
+![video-pc](./assets/preview-usage-pc.mp4)
+</details>
+
+<details> <summary>Smart Phone</summary>
+
+![video-pc](./assets/preview-usage-mobile.mp4)
+</details>
+
+</details>
+
 
 ## Outros detalhes
 
