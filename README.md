@@ -73,7 +73,7 @@ O banco de dados utilizado foi o [Postgres](https://www.postgresql.org/) pela su
   "createdAt": "2024-03-18T00:42:34.179Z"
 }
 ```
-> status code: `200`
+> status code: `201`
 </details>
 
 ___
