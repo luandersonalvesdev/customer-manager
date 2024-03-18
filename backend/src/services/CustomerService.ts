@@ -73,7 +73,11 @@ export default class CustomerService {
 
   public async getCustomerById(id: string): Promise<ServiceResponse<ICustomer>> {
     try {
-      const customer = await this.customerModel.findOne({ where: { id: Number(id) } });
+      const customer = await this.customerModel.findOne({
+        where: { id: Number(id) },
+        attributes: ['id', 'fullName', 'email', 'cpf', 'phoneNumber', 'createdAt', 'updatedAt'],
+        include: [{ model: SequelizeCustomerStatus, as: 'status', attributes: ['name', 'id'] }],
+      });
 
       if (!customer) {
         return { status: NOT_FOUND, data: { message: 'Customer not found.' } };
