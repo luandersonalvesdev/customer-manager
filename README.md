@@ -6,7 +6,7 @@ Este projeto foi desenvolvido como um desafio técnico para o cargo de Software 
 ## Rode localmente
 
   1. Primeiramente você precisa ter o [Docker](https://docs.docker.com/engine/install/ubuntu/), [Docker Compose](https://docs.docker.com/compose/install/) e [Node](https://nodejs.org/en)(versão 16 ou superior) instalado.
-  2. Certifique-se de que as portas `3000`, `3001` e `5432` do seu computador estejam disponíveis; caso contrário, poderão ocorrer erros.
+  2. Certifique-se de que as portas `3000`, `3001` e `5432` do seu computador estejam disponíveis; caso contrário, poderá ocorrer erros.
   3. Instale todas as dependências (`frontend` e `backend`) executando:
   ```bash
     npm run install:all
@@ -34,7 +34,7 @@ E se acessar [localhost:3001](http://localhost:3001/) você verá algo parecido 
 <details> <summary>Ver mais</summary>
 
 
-O banco de dados utilizada foi o [Postgres](https://www.postgresql.org/) pela sua rapidez, versatilidade e facilidade de utilização. A estrutura escolhida foi a seguinte.
+O banco de dados utilizado foi o [Postgres](https://www.postgresql.org/) pela sua rapidez, versatilidade e facilidade de utilização. A estrutura escolhida foi a seguinte.
 
 ![db-structure](/assets/preview-db.png)
 </details>
@@ -51,7 +51,7 @@ O banco de dados utilizada foi o [Postgres](https://www.postgresql.org/) pela su
 /customer
 ```
 
-| Parametro   | Tipo       | Descrição                           |
+| Parâmetro   | Tipo       | Descrição                           |
 | :---------- | :--------- | :---------------------------------- |
 | `fullName` | `string` | Obrigatório |
 | `email` | `string` | Obrigatório |
@@ -60,8 +60,6 @@ O banco de dados utilizada foi o [Postgres](https://www.postgresql.org/) pela su
 | `statusId` | `number` | Obrigatório |
 
 <details> <summary> Retorno esperado </summary> 
-
-* status code `201`
 
 ```bash
 {
@@ -75,6 +73,7 @@ O banco de dados utilizada foi o [Postgres](https://www.postgresql.org/) pela su
   "createdAt": "2024-03-18T00:42:34.179Z"
 }
 ```
+> status code: `200`
 </details>
 
 ___
@@ -87,7 +86,7 @@ ___
 /customer
 ```
 
-| Parametro   | Tipo       | Descrição                           |
+| Parâmetro   | Tipo       | Descrição                           |
 | :---------- | :--------- | :---------------------------------- |
 | `id` | `number` | Obrigatório |
 | `fullName` | `string` | Obrigatório |
@@ -98,7 +97,6 @@ ___
 
 <details> <summary> Retorno esperado </summary> 
 
-* status code `200`
 
 ```bash
 {
@@ -110,6 +108,7 @@ ___
   "statusId": 2
 }
 ```
+> status code: `200`
 </details>
 
 ___
@@ -123,14 +122,12 @@ ___
 /customer
 ```
 
-| Query parametros   | Tipo       | Descrição                           |
+| Query Parâmetros   | Tipo       | Descrição                           |
 | :---------- | :--------- | :---------------------------------- |
 | `limit` | `string` | `10` valor padrão |
 | `offset` | `string` | `0` valor padrão |
 
 <details> <summary> Retorno esperado </summary> 
-
-* status code `200`
 
 ```bash
 [
@@ -162,7 +159,7 @@ ___
   },
 ]
 ```
-
+> status code: `200`
 </details>
 
 ___
@@ -178,7 +175,6 @@ ___
 
 <details> <summary> Retorno esperado </summary> 
 
-* status code `200`
 
 ```bash
 {
@@ -195,7 +191,7 @@ ___
   "updatedAt": "2024-03-18T00:01:12.968Z"
 }
 ```
-
+> status code: `200`
 </details>
 
 ___
@@ -210,8 +206,6 @@ ___
 ```
 
 <details> <summary> Retorno esperado </summary> 
-
-* status code `200`
 
 ```bash
 [
@@ -233,7 +227,7 @@ ___
   }
 ]
 ```
-
+> status code: `200`
 </details>
 
 </details>
@@ -263,7 +257,7 @@ Se tudo ocorrer bem, você vera alguma coisa parecida com isso:
 
 <details> <summary>Frontend</summary>
 
-Os testes unitários do `frontend` foram feitos pelo `Jest` com auxílio do `Babel`.
+Os testes unitários do `frontend` foram feitos pelo `Jest` e `React Testing Library` com auxílio do `Babel`.
 
 ### Executar
 
