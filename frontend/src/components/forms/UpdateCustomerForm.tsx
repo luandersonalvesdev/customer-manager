@@ -35,7 +35,7 @@ export default function UpdateCustomerForm(
     setValue('email', customer.email);
     setValue('cpf', cpfMask(customer.cpf));
     setValue('phoneNumber',phoneNumberMask(customer.phoneNumber));
-    setValue('statusId', customer.statusId);
+    setValue('statusId', customer.status.id);
   }, []);
 
   const onSubmit = async (customerData: ICustomerForm) => {
