@@ -339,12 +339,12 @@ React permite a criação de interfaces declarativas e promove a modularidade do
 
 <details> <summary>PC</summary>
 
-![video-pc](./assets/preview-usage-pc.mp4)
+![video-pc](./assets/preview-usage-pc.gif)
 </details>
 
 <details> <summary>Smart Phone</summary>
 
-![video-pc](./assets/preview-usage-mobile.mp4)
+![video-pc](./assets/preview-usage-mobile.gif)
 </details>
 
 </details>
