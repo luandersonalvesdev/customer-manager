@@ -7,15 +7,21 @@ Este projeto foi desenvolvido como um desafio técnico para o cargo de Software 
 
   1. Primeiramente você precisa ter o [Docker](https://docs.docker.com/engine/install/ubuntu/), [Docker Compose](https://docs.docker.com/compose/install/) e [Node](https://nodejs.org/en)(versão 16 ou superior) instalado.
   2. Certifique-se de que as portas `3000`, `3001` e `5432` do seu computador estejam disponíveis; caso contrário, poderá ocorrer erros.
-  3. Instale todas as dependências (`frontend` e `backend`) executando:
+  3. Clone o repositório e mude para a branch do projeto:
+  ```bash
+    git clone git@github.com:luandersonalvesdev/customer-manager.git
+    cd customer-manager
+    git checkout luanderson-alves-test-fullstack
+  ```
+  4. Instale todas as dependências (`frontend` e `backend`) executando:
   ```bash
     npm run install:all
   ```
-  4. Dentro de cada diretório tem um arquivo `.env.example` que você pode configurar manualmente ou execute o comando:
+  5. Dentro de cada diretório tem um arquivo `.env.example` que você pode configurar manualmente ou execute o comando:
   ```bash
     npm run setup:env
   ```
-  5. Por fim execute:
+  6. Por fim execute:
   ```bash
     npm run docker:up
   ```
