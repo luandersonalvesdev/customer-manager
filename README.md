@@ -81,7 +81,7 @@ ___
 
 ### Atualizar cliente
 
-![#f03c15](https://placehold.co/15x15/49CC90/49CC90.png) &nbsp;**POST**
+![#f03c15](https://placehold.co/15x15/FCA130/FCA130.png) &nbsp;**PUT**
 
 ```
 /customer
@@ -247,7 +247,7 @@ ___
 
 <details> <summary>Backend</summary>
 
-Os testes unitários do `backend` foram feitos pelo `Mocha`, `Chai`, e `Sinon`. Também `nyc` foi utilizado para mostrar a cobertura.
+Os testes unitários do `backend` foram feitos pelo `Mocha`, `Chai` e `Sinon`. Também `nyc` foi utilizado para mostrar a cobertura.
 
 ### Executar
 
@@ -309,7 +309,7 @@ A camada Controller serve como ponto de entrada para solicitações recebidas e 
 
 <details> <summary>Frontend</summary>
 
-# Padrão de Design SRP
+## Padrão de Design SRP
 #### Visão Geral
 O padrão SRP (Single Responsibility Principle) aplicado ao frontend com React promove componentes de responsabilidade única, resultando em uma arquitetura modular e fácil de manter. Cada componente realiza uma única tarefa específica, facilitando a reutilização e simplificando a manutenção.
 
